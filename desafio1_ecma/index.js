@@ -12,7 +12,7 @@ class ProductManager {
 
   addProduct(title, description, price, thumbnail, code, stock) {
     if (!title || !description || !price || !thumbnail || !code || !stock) {
-      console.log("All fields are required");
+      console.error("All fields are required");
       return;
     }
 
@@ -29,10 +29,10 @@ class ProductManager {
     if (!this.products.length) {
       this.products.push(newProduct);
     } else {
-      this.products.forEach((e) => {
-        if (e.code === code) {
+      this.products.forEach((product) => {
+        if (product.code === code) {
           this.idProduct--;
-          console.log(`The product with code ${e.code} already exist`);
+          console.error(`The product with code ${product.code} already exist`);
         } else {
           this.products.push(newProduct);
         }
