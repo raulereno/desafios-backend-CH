@@ -8,7 +8,7 @@ class ProductManager {
 
   async getProducts() {
     let file = await fs.promises
-      .readFile(`${this.path}/files/products.json`, "utf-8")
+      .readFile(`${this.path}/products.json`, "utf-8")
       .then((data) => {
         return JSON.parse(data);
       })
@@ -40,7 +40,7 @@ class ProductManager {
 
     if (!products.length) {
       await fs.promises.writeFile(
-        `${this.path}/files/products.json`,
+        `${this.path}/products.json`,
         JSON.stringify([newProduct])
       );
       console.log("Producto agregado correctamente");
@@ -54,7 +54,7 @@ class ProductManager {
       } else {
         products.push(newProduct);
         await fs.promises.writeFile(
-          `${this.path}/files/products.json`,
+          `${this.path}/products.json`,
           JSON.stringify(products)
         );
         console.log("Producto agregado correctamente");
@@ -82,7 +82,7 @@ class ProductManager {
     if (finded) {
       finded[key] = value;
       await fs.promises.writeFile(
-        `${this.path}/files/products.json`,
+        `${this.path}/products.json`,
         JSON.stringify(products)
       );
     }
@@ -101,7 +101,7 @@ class ProductManager {
         return product;
       });
       await fs.promises.writeFile(
-        `${this.path}/files/products.json`,
+        `${this.path}/products.json`,
         JSON.stringify(formatIdProducts)
       );
     } else {
