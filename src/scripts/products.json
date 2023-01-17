@@ -1,0 +1,92 @@
+[
+    {
+        "id": 1,
+        "title": "Nimbus 2000",
+        "description": "The fastest flying broom in the market",
+        "price": 300.5,
+        "thumbnail": "https://i.ytimg.com/vi/9kND8PSBIYM/maxresdefault.jpg",
+        "code": "b70",
+        "stock": 8
+    },
+    {
+        "id": 2,
+        "title": "Time-Turner",
+        "description": "A Time-Turner was a magical device used for time travel.",
+        "price": 500.99,
+        "thumbnail": "https://static.wikia.nocookie.net/harrypotter/images/a/a4/Time_Turner.png/revision/latest/scale-to-width-down/350?cb=20161126042527",
+        "code": "b85",
+        "stock": 1
+    },
+    {
+        "id": 3,
+        "title": "Mandrake",
+        "description": "Magical and sentient plant which had a root that looked like a human",
+        "price": 50,
+        "thumbnail": "https://i.pinimg.com/736x/3c/b1/89/3cb1892dc59f4d0af8f33bd4861469bd--plants-in-pots-harry-potter.jpg",
+        "code": "p11",
+        "stock": 20
+    },
+    {
+        "id": 4,
+        "title": "Bertie Bott's Every Flavo",
+        "description": "There was also no way of telling for sure what flavour any given bean was without tasting it, although you could try and guess by the colour.",
+        "price": 40.99,
+        "thumbnail": "https://static.wikia.nocookie.net/harrypotter/images/6/60/Bertie_Botts_EFB.png/revision/latest/scale-to-width-down/341?cb=20161128010133",
+        "code": "s113",
+        "stock": 30
+    },
+    {
+        "id": 5,
+        "title": "Cloak of invisibility",
+        "description": "A cloak of invisibility is an item that prevents the wearer from being seen. One of the Deathly Hallows",
+        "price": 1500,
+        "thumbnail": "https://static.wikia.nocookie.net/esharrypotter/images/2/23/Capa_de_invisibilidad_PM.png/revision/latest/scale-to-width-down/1200?cb=20180112163535",
+        "code": "dh1",
+        "stock": 1
+    },
+    {
+        "id": 6,
+        "title": "Triwizard Cup",
+        "description": "Shining cup that was awarded to the winner of the Triwizard Tournament, and held as an honour by the victorious school until t",
+        "price": 1200.99,
+        "thumbnail": "https://static.wikia.nocookie.net/esharrypotter/images/a/a4/P4_Copa_de_los_Tres_Magos.jpg/revision/latest?cb=20111105143745",
+        "code": "t10",
+        "stock": 1
+    },
+    {
+        "id": 7,
+        "title": "Philosopher's Stone",
+        "description": "Legendary alchemical substance with magical properties.",
+        "price": 1100,
+        "thumbnail": "https://static.wikia.nocookie.net/harrypotter/images/f/ff/Pholosophers-Stone_PM.jpg/revision/latest/scale-to-width-down/1000?cb=20161122143651",
+        "code": "as13",
+        "stock": 1
+    },
+    {
+        "id": 8,
+        "title": "Elder Wand",
+        "description": "The most powerful wand in the world. One of the Deathly Hallows",
+        "price": 1500,
+        "thumbnail": "https://static.wikia.nocookie.net/esharrypotter/images/2/23/Capa_de_invisibilidad_PM.png/revision/latest/scale-to-width-down/1200?cb=20180112163535",
+        "code": "dh2",
+        "stock": 1
+    },
+    {
+        "id": 9,
+        "title": "Gillyweed",
+        "description": "Magical plant that, when eaten, allowed a human to breathe underwater.",
+        "price": 525,
+        "thumbnail": "https://qph.cf2.quoracdn.net/main-qimg-a7d07cf7a1a5421a75c4046e80f75b2c-lq",
+        "code": "p1321",
+        "stock": 30
+    },
+    {
+        "id": 10,
+        "title": "Polyjuice Potion",
+        "description": "Potion that allowed the drinker to assume the form of someone else.",
+        "price": 600.99,
+        "thumbnail": "https://static.wikia.nocookie.net/harrypotter/images/e/e7/Lacewing-flies-lrg.png/revision/latest?cb=20140828153824",
+        "code": "pm11",
+        "stock": 5
+    }
+]
