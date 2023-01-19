@@ -20,7 +20,7 @@ server.get("/", async (req, res) => {
   <h1>Bienvenido:</h1> 
   <ul>
   <li>Ingresa a <b>/products</b> para ver todos los productos.<a href="/products">Link</a></li>
-  <li>Puedes limitar la cantidad de productos a visualizar agregando /products?limit=NUMERO por ejemplo /products?limit=5 mostrara los primeros cinco productos disponibles. <a href="/products?limit=3">Pruebalo</a></li>
+  <li>Puedes limitar la cantidad de productos a visualizar agregando /products?limit=NUMERO por ejemplo /products?limit=5 mostrara los primeros cinco productos disponibles. <a href="/products?limit=5">Pruebalo</a></li>
   </ul>
   <h2>O ingresa a cada producto:</h2>
   <ul>
