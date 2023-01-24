@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "status": true,
+        "title": "Nimbus 2000",
+        "description": "The fastest flying broom in the market",
+        "price": 300.5,
+        "thumbnail": "https://i.ytimg.com/vi/9kND8PSBIYM/maxresdefault.jpg",
+        "code": "b70",
+        "stock": 8
+    },
+    {
+        "id": 2,
+        "status": true,
+        "title": "Time-Turner",
+        "description": "A Time-Turner was a magical device used for time travel.",
+        "price": 500.99,
+        "thumbnail": "https://static.wikia.nocookie.net/harrypotter/images/a/a4/Time_Turner.png/revision/latest/scale-to-width-down/350?cb=20161126042527",
+        "code": "b85",
+        "stock": 1
+    },
+    {
+        "id": 3,
+        "status": true,
+        "title": "Mandrake",
+        "description": "Magical and sentient plant which had a root that looked like a human",
+        "price": 50,
+        "thumbnail": "https://i.pinimg.com/736x/3c/b1/89/3cb1892dc59f4d0af8f33bd4861469bd--plants-in-pots-harry-potter.jpg",
+        "code": "p11",
+        "stock": 20
+    }
+]
