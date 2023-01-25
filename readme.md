@@ -61,7 +61,7 @@ Esta request debe tener un body, ejemplo:
 }
 ```
 
-#### Crear un producto
+#### Actualiza un producto
 ```http
   PUT /products/:pid
 ```
@@ -70,7 +70,7 @@ Esta request debe tener un body, ejemplo:
 | :-------- | :------- | :-------------------------------- |
 | `pid`      | `number` | **Requerido**. ID del artículo a actualizar |
 
-Esta request debe tener un body, ejemplo:
+Esta request debe tener un body con una o mas propiedades del producto que se quiere actualizar, ejemplo:
 ```json
 {
 	"title":"La copa de los tre mago",
