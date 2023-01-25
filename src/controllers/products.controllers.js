@@ -18,7 +18,7 @@ const allProducts = async (limit) => {
       })
   );
 
-  if (limit) {
+  if (limit && Number(limit)) {
     return products.slice(0, limit);
   }
   return products;
@@ -70,7 +70,6 @@ const createProduct = async (product) => {
   return product;
 };
 
-//TODO: verificar si el id es un numero
 const updateProduct = async (pid, modifies) => {
   if (!Number(pid)) {
     throw new Error("The id must be a number");

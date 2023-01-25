@@ -11,7 +11,7 @@ router.get("/:cid", async (req, res) => {
 
   try {
     const cart = await getCart(cid);
-    res.status(200).send({ status: "success", cart: cart });
+    res.status(200).send({ status: "success", products: cart });
   } catch (err) {
     res.status(404).send({ status: "reject", msg: err.message });
   }

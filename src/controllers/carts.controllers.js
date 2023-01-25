@@ -31,7 +31,7 @@ const getCart = async (cid) => {
 
   //Recupero todos los carritos existentes y busco por el id
   const carts = await allCarts();
-  const find = carts.find((element) => element.cartId === Number(cid));
+  const find = carts.find((element) => element.id === Number(cid));
 
   //Si el carrito no se encuentra retorno una excepción
   if (!find) {
@@ -44,8 +44,7 @@ const getCart = async (cid) => {
 const createCart = async (cart) => {
   const carts = await allCarts();
 
-  console.log(cart);
-  carts.push({ cartId: carts.length + 1, products: cart.products });
+  carts.push({ id: carts.length + 1, products: cart.products });
 
   fs.promises.writeFile(filePath, JSON.stringify(carts));
 };
@@ -62,7 +61,7 @@ const addProductToCart = async (cid, pid, quantity) => {
 
   //En este caso sino existe el carrito indicado por id no se puede agregar el producto
   const carts = await allCarts();
-  const findCart = carts.find((element) => element.cartId === Number(cid));
+  const findCart = carts.find((element) => element.id === Number(cid));
   if (!findCart) {
     throw new Error(`The cart with id ${cid} does not exist`);
   }
