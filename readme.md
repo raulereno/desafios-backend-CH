@@ -3,7 +3,7 @@
 
 
 
-## Installation
+## Instalación
 
 Sobre la carpeta del proyecto ejecutar:
 
