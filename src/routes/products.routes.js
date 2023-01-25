@@ -16,9 +16,7 @@ router.get("/", async (req, res) => {
     const products = await allProducts(limit);
     res.status(200).send(products);
   } catch (err) {
-    console.log(err.message);
-
-    res.status(404).send({ status: "reject", msg: err.message });
+    res.status(404).send({ status: "reject", msg: [] });
   }
 });
 
@@ -37,8 +35,12 @@ router.get("/:pid", async (req, res) => {
 router.post("/", async (req, res) => {
   try {
     const newProduct = await createProduct(req.body);
-
-    res.status(201).send(newProduct);
+    res
+      .status(201)
+      .send({
+        status: "success",
+        msg: `The new product has a id ${newProduct.id}`,
+      });
   } catch (err) {
     res.status(400).send({ status: "Error", msg: err.message });
   }

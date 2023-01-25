@@ -8,7 +8,7 @@ server.use(express.json());
 server.use("/", routes);
 
 server.get("/", (req, res) => {
-  res.send("hola");
+  res.json({ msg: "Bienvenido a la primera preentrega" });
 });
 
 server.listen(PORT, () => {
