@@ -74,7 +74,7 @@ Esta request debe tener un body, ejemplo:
 ```json
 {
 	"title":"La copa de los tre mago",
-			"thumbnails":["https://static.wikia.nocookie.net/harrypotter/images/5/59/Elder_Wand.png/revision/latest/scale-to-width-down/350?cb=20161128051519"]
+	"thumbnails":["https://static.wikia.nocookie.net/harrypotter/images/5/59/Elder_Wand.png/revision/latest/scale-to-width-down/350?cb=20161128051519"]
 }
 ```
 
