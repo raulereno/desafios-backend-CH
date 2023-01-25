@@ -44,7 +44,11 @@ const getCart = async (cid) => {
 const createCart = async (cart) => {
   const carts = await allCarts();
 
-  carts.push({ id: carts.length + 1, products: cart.products });
+  carts.push({
+    id: carts.length + 1,
+    //Si recibe una request sin la propiedad products la crea con un array vacio
+    products: cart.products ? cart.products : [],
+  });
 
   fs.promises.writeFile(filePath, JSON.stringify(carts));
 };
