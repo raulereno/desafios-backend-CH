@@ -1,0 +1,85 @@
+h1 {
+  margin: 40px 0;
+  text-decoration: underline 2px black;
+  text-align: center;
+}
+#navbarNav .navbar-nav {
+  justify-content: center;
+}
+#navbarNav .navbar-nav li {
+  border-radius: 5px;
+}
+#navbarNav .navbar-nav li:hover {
+  background-color: rgba(128, 128, 128, 0.408);
+}
+
+.container_details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container_details img {
+  width: 500px;
+  height: auto;
+  max-height: 650px;
+}
+.container_products {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px;
+  padding-top: 0;
+  width: 100%;
+}
+.container_products .products {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+}
+
+.container_products .products img {
+  min-height: 300px;
+  max-height: 300px;
+}
+
+#container_realTime {
+  display: flex;
+  min-height: 80vh;
+  width: 100%;
+  padding: 0 50px;
+}
+#container_realTime h2 {
+  width: 100%;
+}
+#container_realTime form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: grey;
+  width: 300px;
+  padding: 30px 20px;
+  max-height: 330px;
+  gap: 10px;
+  
+}
+#container_realTime button{
+  
+}
+#container_realTime button:hover {
+  transform: scale(1.05);
+}
+#container_realTime .iconTrash {
+  width: 30px;
+  background-color: white;
+  position: absolute;
+  right: 0;
+  padding: 5px;
+  border-radius: 0 5px 0 5px;
+}
+
+#container_realTime .iconTrash:hover {
+  transform: scale(1.1);
+  fill: red;
+  cursor: pointer;
+}

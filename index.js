@@ -1,7 +1,8 @@
-const server = require("./src/server");
+const { httpServer } = require("./src/socket");
+
 const PORT = 3001;
 
-server
+httpServer
   .listen(PORT, () => {
     console.log(`Server listening in PORT:${PORT}`);
   })
