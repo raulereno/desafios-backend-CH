@@ -16,6 +16,7 @@ let products = [];
 })();
 
 io.on("connection", (socket) => {
+  console.log("cliente conectado");
   socket.emit("all products", products);
 });
 
