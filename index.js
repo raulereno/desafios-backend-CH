@@ -1,7 +1,9 @@
-const app = require("./src/server");
+const { httpServer } = require("./src/socket");
+
 const PORT = process.env.PORT || 8080;
 
-app.listen(PORT, () => {
-  console.log(`Server listening in port:${PORT}`);
-  console.log(`http://localhost:${PORT}/`);
+const app = httpServer.listen(PORT, () => {
+  console.log(`Server listening in port:${app.address().port}`);
+  console.log(`http://localhost:${app.address().port}/`);
 });
+app.on("error", (error) => console.log(error));
