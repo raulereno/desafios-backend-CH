@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 });
 
+//-----Home----Products Functions
 const deleteProduct = async (id) => {
   await fetch(`${window.location.href}/${id}`, {
     method: "DELETE",
@@ -87,6 +88,9 @@ const send_update = async (evt) => {
   const price = document.querySelector(
     "#form_updateProduct input[name='price']"
   ).value;
+  const image = document.querySelector(
+    "#form_updateProduct input[name='image']"
+  ).value;
 
   await fetch(`${window.location.href}/${idProduct}`, {
     method: "PUT",
@@ -95,12 +99,12 @@ const send_update = async (evt) => {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ title, description, price }),
+    body: JSON.stringify({ title, description, price, image }),
   });
 
   location.reload();
 };
-
+//-----Cart----Cart Functions
 const createCart = async () => {
   const cartId = localStorage.getItem("cartId");
   if (!cartId) {
@@ -137,5 +141,31 @@ const addToCart = async (id) => {
       cartId: cartId,
       productId: id,
     }),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      const toastLiveExample = document.getElementById("liveToast");
+
+      const toast = new bootstrap.Toast(toastLiveExample);
+
+      toast.show();
+    });
+};
+
+const deleteProductInCart = async (id) => {
+  const cartId = localStorage.getItem("cartId");
+
+  await fetch(`http://${window.location.host}/cart/deleteProduct`, {
+    method: "DELETE",
+    mode: "cors",
+    cache: "no-cache",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      cartId: cartId,
+      productId: id,
+    }),
   });
+  location.reload();
 };

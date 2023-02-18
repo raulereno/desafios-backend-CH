@@ -2,6 +2,7 @@ const {
   createCartService,
   addProductToCartService,
   getCartService,
+  deleteProductInCartService,
 } = require("../services/cart.service");
 const { getProductsService } = require("../services/product.service");
 
@@ -16,10 +17,8 @@ const getCart = async (id) => {
     );
     return product;
   });
-
+  //Agrego los objetos productos en el carrito
   const formatCart = { ...cart, products: findProducts };
-
-  console.log(formatCart);
 
   return formatCart;
 };
@@ -36,4 +35,10 @@ const addProductToCart = async (cartId, productId) => {
   return result;
 };
 
-module.exports = { createCart, addProductToCart, getCart };
+const deleteProductInCart = async (cartId, productId) => {
+  const result = await deleteProductInCartService(cartId, productId);
+
+  return result;
+};
+
+module.exports = { createCart, addProductToCart, getCart, deleteProductInCart };

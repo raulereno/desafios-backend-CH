@@ -20,4 +20,15 @@ const addProductToCartService = async (cartId, productId) => {
   return result;
 };
 
-module.exports = { createCartService, addProductToCartService, getCartService };
+const deleteProductInCartService = async (cartId, productId) => {
+  const result = await cartDAO.deleteProduct(cartId, productId);
+
+  return result;
+};
+
+module.exports = {
+  createCartService,
+  addProductToCartService,
+  getCartService,
+  deleteProductInCartService,
+};

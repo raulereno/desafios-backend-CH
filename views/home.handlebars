@@ -21,68 +21,52 @@
             <h5 class="card-title{{this._id}}">{{this.title}}</h5>
             <p class="card-text description{{this._id}}">{{this.description}}</p>
             <p class="card-text price{{this._id}}">${{this.price}}</p>
-            <button onclick="addToCart('{{this._id}}')" href="#" class="btn btn-primary align-self-end">Add to cart</button>
+            <button onclick="addToCart('{{this._id}}')" href="#" class="btn btn-primary align-self-end">Add to
+                cart</button>
         </div>
     </div>
     {{/each}}
 
-    <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Actualizar Producto</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="form_updateProduct" onsubmit="send_update">
-                        <label for="input_title">Titulo:</label>
-                        <input type="text" name="title" id="input_title">
-                        <label for="input_description">Descripción:</label>
-                        <input type="text" name="description" id="input_description">
-                        <label for="input_price">Precio:</label>
-                        <input type="number" name="price" id="input_price">
-
-                        <input type="text" name="productId" id="productId" hidden>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="submit" form="form_updateProduct" class="btn btn-primary">Actualizar</button>
-                </div>
-            </div>
-        </div>
-
-        
-    </div>
-    <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Crear un producto</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="/products" id="create_form" enctype="multipart/form-data" method="POST">
-                            <label for="input_create_title">Titulo:</label>
-                            <input type="text" name="title" id="input_create_title">
-
-                            <label for="input_create_description">Descripción:</label>
-                            <input type="text" name="description" id="input_create_description">
-
-                            <label for="input_create_price">Precio:</label>
-                            <input type="text" name="price" id="input_create_price">
-                            
-                            <label for="input_create_image">Imagen url:</label>
-                            <input type="text" name="image" id="input_create_image">
-                            {{!-- <label for="fileUpload">O puedes seleccionar una imagen:</label>
-                            <input type="file" name="file" id="fileUpload"> --}}
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-primary" form="create_form">Crear producto</button>
-                    </div>
-                </div>
-            </div>
-        </div>
 </ul>
+<div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Actualizar Producto</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="form_updateProduct" onsubmit="send_update">
+                    <label for="input_title">Titulo:</label>
+                    <input type="text" name="title" id="input_title">
+                    <label for="input_description">Descripción:</label>
+                    <input type="text" name="description" id="input_description">
+                    <label for="input_price">Precio:</label>
+                    <input type="number" name="price" id="input_price">
+                    <label for="input_update_image">Imagen url:</label>
+                    <input type="text" name="image" id="input_update_image">
+                    <input type="text" name="productId" id="productId" hidden>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="submit" form="form_updateProduct" class="btn btn-primary">Actualizar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3 ">
+    <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+
+        <div class="toast-body">
+            <svg style="height: 30px;width: 30px; fill: green; margin-right: 10px;" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 512 512">
+                <path
+                    d="M470.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L192 338.7 425.4 105.4c12.5-12.5 32.8-12.5 45.3 0z" />
+            </svg> Producto añadido
+        </div>
+    </div>
+</div>

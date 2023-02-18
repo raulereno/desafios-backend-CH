@@ -28,8 +28,8 @@ const showMessages = (messages) => {
 };
 
 const sendMessages = async () => {
-  const email = document.querySelector("#user_email").value;
-  const message = document.querySelector("#user_message").value;
+  let email = document.querySelector("#user_email");
+  let message = document.querySelector("#user_message");
 
   await fetch(`${window.location.href}`, {
     method: "POST",
@@ -37,7 +37,7 @@ const sendMessages = async () => {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ user: email, message }),
+    body: JSON.stringify({ user: email.value, message: message.value }),
   })
     .then((response) => response.json())
     .then((data) => {

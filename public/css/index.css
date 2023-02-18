@@ -1,4 +1,21 @@
 /* HOME VIEW */
+#navbarNav .navbar-nav {
+  gap: 15px;
+}
+#navbarNav .navbar-nav .nav-item:hover {
+  background-color: rgba(128, 128, 128, 0.315);
+  border-radius: 5px;
+}
+#navbarNav .navbar-nav .nav-item:hover > .nav-link {
+  color: black;
+  font-weight: bolder;
+}
+
+#createProduct button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
 h1 {
   text-align: center;
   color: black;
@@ -99,6 +116,8 @@ h1 {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  overflow-y: scroll;
+  padding-bottom: 80px;
 }
 #messages > li {
   padding: 0.5rem 1rem;
@@ -110,4 +129,24 @@ h1 {
 }
 #messages > li:nth-child(odd) {
   background: #efefef;
+}
+
+/* CART VIEW*/
+table tbody button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+table tbody svg {
+  width: 25px;
+  height: 25px;
+  fill: rgba(143, 0, 0, 0.584);
+}
+table tbody svg:hover {
+  fill: rgb(192, 0, 0);
+  transform: scale(1.05);
+}
+
+h2 {
+  text-align: center;
 }

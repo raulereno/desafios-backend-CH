@@ -22,7 +22,7 @@ route.get("/", async (req, res) => {
   }
 });
 
-route.post("/", async (req, res) => {
+route.post("/", uploader.single("file"), async (req, res) => {
   try {
     const result = await createProduct(req.body);
 
@@ -43,7 +43,7 @@ route.post("/createMany", async (req, res) => {
 
 route.put("/:id", async (req, res) => {
   const { id } = req.params;
-
+  console.log(req.body);
   try {
     const result = await updateProduct(id, req.body);
     res.send({ status: "success", payload: result });

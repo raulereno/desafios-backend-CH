@@ -12,6 +12,7 @@ const getProducts = async () => {
 };
 
 const createProduct = async (product) => {
+  console.log(product);
   if (!product.image.length) delete product.image;
 
   if (!product.title || !product.price) throw Error("Fields missing");

@@ -24,7 +24,13 @@ class CartManager {
     return result;
   }
 
-  async deleteProduct() {}
+  async deleteProduct(cardId, productId) {
+    const result = await this.cartCollection.updateOne(
+      { _id: cardId },
+      { $pull: { products: productId } }
+    );
+    return result;
+  }
 }
 
 module.exports = CartManager;
