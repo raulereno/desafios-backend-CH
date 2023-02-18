@@ -4,13 +4,21 @@ const ChatManager = require("../dao/mongoDb/chat.dao");
 const chatDAO = new ChatManager("messages", messageSchema);
 
 const getMessagesServices = async () => {
-  let response = await chatDAO.getAllMessages();
-  return response;
+  try {
+    let response = await chatDAO.getAllMessages();
+    return response;
+  } catch (error) {
+    throw Error(error);
+  }
 };
 
 const addMessageServices = async (message) => {
-  let response = await chatDAO.createMessage(message);
-  return response;
+  try {
+    let response = await chatDAO.createMessage(message);
+    return response;
+  } catch (error) {
+    throw Error(error);
+  }
 };
 
 module.exports = { getMessagesServices, addMessageServices };

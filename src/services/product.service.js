@@ -4,28 +4,48 @@ const ProductMaganer = require("../dao/mongoDb/product.dao");
 const productDAO = new ProductMaganer("products", productSchema);
 
 const getProductsService = async () => {
-  let products = await productDAO.getAllProducts();
-  return products;
+  try {
+    let products = await productDAO.getAllProducts();
+    return products;
+  } catch (error) {
+    throw Error(error);
+  }
 };
 
 const createProductService = async (product) => {
-  let response = await productDAO.createProduct(product);
-  return response;
+  try {
+    let response = await productDAO.createProduct(product);
+    return response;
+  } catch (error) {
+    throw Error(error);
+  }
 };
 const updateProductService = async (id, product) => {
-  let response = await productDAO.updateProduct(id, product);
-  return response;
+  try {
+    let response = await productDAO.updateProduct(id, product);
+    return response;
+  } catch (error) {
+    throw Error(error);
+  }
 };
 
 const deleteProductService = async (id) => {
-  let response = await productDAO.deleteProduct(id);
+  try {
+    let response = await productDAO.deleteProduct(id);
 
-  return response;
+    return response;
+  } catch (error) {
+    throw Error(error);
+  }
 };
 
 const createManyProductsService = async (products) => {
-  let response = await productDAO.createManyProducts(products);
-  return response;
+  try {
+    let response = await productDAO.createManyProducts(products);
+    return response;
+  } catch (error) {
+    throw Error(error);
+  }
 };
 
 module.exports = {

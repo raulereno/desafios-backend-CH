@@ -10,7 +10,7 @@ class ChatManager {
       let messages = await this.productCollection.find().lean();
       return messages;
     } catch (error) {
-      console.log(error);
+      throw Error(error);
     }
   }
 
@@ -19,7 +19,7 @@ class ChatManager {
       let result = await this.productCollection.create(message);
       return result;
     } catch (error) {
-      console.log(error);
+      throw Error(error);
     }
   }
 }

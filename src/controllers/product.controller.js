@@ -1,3 +1,4 @@
+const products = require("../../products");
 const {
   getProductsService,
   createProductService,
@@ -12,35 +13,49 @@ const getProducts = async () => {
 };
 
 const createProduct = async (product) => {
-  console.log(product);
-  if (!product.image.length) delete product.image;
+  try {
+    if (!product.image.length) delete product.image;
 
-  if (!product.title || !product.price) throw Error("Fields missing");
+    if (!product.title || !product.price) throw Error("Fields missing");
 
-  let result = await createProductService(product);
+    let result = await createProductService(product);
 
-  return result;
+    return result;
+  } catch (error) {
+    throw Error(error);
+  }
 };
 
 const updateProduct = async (id, productUpdated) => {
-  //Sino se especifica imagen eliminamos el campo para que no lo modifique con un string vacio
-  if (!productUpdated.image) delete productUpdated.image;
+  try {
+    //Sino se especifica imagen eliminamos el campo para que no lo modifique con un string vacio
+    if (!productUpdated.image) delete productUpdated.image;
 
-  let result = await updateProductService(id, productUpdated);
+    let result = await updateProductService(id, productUpdated);
 
-  return result;
+    return result;
+  } catch (error) {
+    throw Error(error);
+  }
 };
 
 const deleteProduct = async (id) => {
-  let result = await deleteProductService(id);
+  try {
+    let result = await deleteProductService(id);
 
-  return result;
+    return result;
+  } catch (error) {
+    throw Error(error);
+  }
 };
 
-const createManyProducts = async (products) => {
-  let result = await createManyProductsService(products);
-
-  return result;
+const createManyProducts = async () => {
+  try {
+    let result = await createManyProductsService(products);
+    return result;
+  } catch (error) {
+    throw Error(error);
+  }
 };
 
 module.exports = {

@@ -6,34 +6,50 @@ class CartManager {
   }
 
   async createCart() {
-    const newCart = await this.cartCollection.create({});
-    return newCart;
+    try {
+      const newCart = await this.cartCollection.create({});
+      return newCart;
+    } catch (error) {
+      throw Error(error);
+    }
   }
 
   async getCart(id) {
-    let cart = await this.cartCollection.findOne({ _id: id });
+    try {
+      let cart = await this.cartCollection.findOne({ _id: id });
 
-    if (!cart) {
-      cart = await this.cartCollection.create({ _id: id });
+      if (!cart) {
+        cart = await this.cartCollection.create({ _id: id });
+      }
+
+      return cart;
+    } catch (error) {
+      throw Error(error);
     }
-
-    return cart;
   }
 
   async addProduct(cardId, productId) {
-    const result = await this.cartCollection.updateOne(
-      { _id: cardId },
-      { $push: { products: productId } }
-    );
-    return result;
+    try {
+      const result = await this.cartCollection.updateOne(
+        { _id: cardId },
+        { $push: { products: productId } }
+      );
+      return result;
+    } catch (error) {
+      throw Error(error);
+    }
   }
 
   async deleteProduct(cardId, productId) {
-    const result = await this.cartCollection.updateOne(
-      { _id: cardId },
-      { $pull: { products: productId } }
-    );
-    return result;
+    try {
+      const result = await this.cartCollection.updateOne(
+        { _id: cardId },
+        { $pull: { products: productId } }
+      );
+      return result;
+    } catch (error) {
+      throw Error(error);
+    }
   }
 }
 

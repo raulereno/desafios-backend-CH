@@ -33,8 +33,7 @@ route.post("/", uploader.single("file"), async (req, res) => {
 });
 route.post("/createMany", async (req, res) => {
   try {
-    const result = createManyProducts(req.body);
-
+    const result = await createManyProducts();
     res.send({ status: "success", payload: result });
   } catch (error) {
     res.send({ status: "error", error: error.message });

@@ -10,7 +10,7 @@ class ProductMaganer {
       let products = await this.productCollection.find().lean();
       return products;
     } catch (error) {
-      console.log(error);
+      throw Error(error);
     }
   }
 
@@ -19,19 +19,23 @@ class ProductMaganer {
       let result = await this.productCollection.create(product);
       return result;
     } catch (error) {
-      console.log(error);
+      throw Error(error);
     }
   }
   async updateProduct(id, product) {
-    let result = await this.productCollection.updateOne({ _id: id }, product);
-    return result;
+    try {
+      let result = await this.productCollection.updateOne({ _id: id }, product);
+      return result;
+    } catch (error) {
+      throw Error(error);
+    }
   }
   async deleteProduct(id) {
     try {
       let result = await this.productCollection.deleteOne({ _id: id });
       return result;
     } catch (error) {
-      console.log(error);
+      throw Error(error);
     }
   }
 
@@ -40,7 +44,7 @@ class ProductMaganer {
       let result = await this.productCollection.insertMany(products);
       return result;
     } catch (error) {
-      console.log(error);
+      throw Error(error);
     }
   }
 }

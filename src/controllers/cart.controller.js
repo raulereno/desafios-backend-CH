@@ -7,45 +7,60 @@ const {
 const { getProductsService } = require("../services/product.service");
 
 const getCart = async (id) => {
-  const cart = await getCartService(id);
+  try {
+    const cart = await getCartService(id);
 
-  const products = await getProductsService();
-  const findProducts = [];
+    const products = await getProductsService();
+    const findProducts = [];
 
-  cart.products.forEach((productId) => {
-    const product = products.find(
-      (product) => product._id.toString() === productId
-    );
+    cart.products.forEach((productId) => {
+      const product = products.find(
+        (product) => product._id.toString() === productId
+      );
 
-    //Compruebo si los productos ya no han sido eliminados
-    if (product) {
-      findProducts.push(product);
-    }
-  });
+      //Compruebo si los productos ya no han sido eliminados
+      if (product) {
+        findProducts.push(product);
+      }
+    });
 
-  //Agrego los objetos productos en el carrito
-  const formatCart = { ...cart, products: findProducts };
+    //Agrego los objetos productos en el carrito
+    const formatCart = { ...cart, products: findProducts };
 
-  console.log(formatCart);
-  return formatCart;
+    return formatCart;
+  } catch (error) {
+    throw Error(error);
+  }
 };
 
 const createCart = async () => {
-  const newCart = await createCartService();
+  try {
+    const newCart = await createCartService();
 
-  return newCart;
+    return newCart;
+  } catch (error) {
+    throw Error(error);
+  }
 };
 
 const addProductToCart = async (cartId, productId) => {
-  const result = await addProductToCartService(cartId, productId);
+  try {
+    const result = await addProductToCartService(cartId, productId);
 
-  return result;
+    return result;
+  } catch (error) {
+    throw Error(error);
+  }
 };
 
 const deleteProductInCart = async (cartId, productId) => {
-  const result = await deleteProductInCartService(cartId, productId);
+  try {
+    const result = await deleteProductInCartService(cartId, productId);
 
-  return result;
+    return result;
+  } catch (error) {
+    throw Error(error);
+  }
 };
 
 module.exports = { createCart, addProductToCart, getCart, deleteProductInCart };
