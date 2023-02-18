@@ -7,12 +7,16 @@ class CartManager {
 
   async createCart() {
     const newCart = await this.cartCollection.create({});
-    console.log(newCart);
     return newCart;
   }
 
   async getCart(id) {
-    const cart = await this.cartCollection.findOne({ _id: id });
+    let cart = await this.cartCollection.findOne({ _id: id });
+
+    if (!cart) {
+      cart = await this.cartCollection.create({ _id: id });
+    }
+
     return cart;
   }
 

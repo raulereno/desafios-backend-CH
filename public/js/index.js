@@ -44,7 +44,7 @@ const createProduct = async () => {
   // const fileUpload = document.querySelector("#fileUpload");
   // const file = fileUpload.files[0];
 
-  await fetch(`${window.location.href}`, {
+  await fetch(`http://${window.location.host}/products`, {
     method: "POST",
     mode: "cors",
     headers: {
@@ -108,7 +108,7 @@ const send_update = async (evt) => {
 const createCart = async () => {
   const cartId = localStorage.getItem("cartId");
   if (!cartId) {
-    await fetch(`http://localhost:3001/cart`, {
+    await fetch(`http://${window.location.host}/cart`, {
       method: "POST",
       mode: "cors",
       headers: {
@@ -117,8 +117,6 @@ const createCart = async () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
-
         localStorage.setItem("cartId", data.payload._id);
       });
   }
@@ -144,11 +142,11 @@ const addToCart = async (id) => {
   })
     .then((res) => res.json())
     .then((data) => {
-      const toastLiveExample = document.getElementById("liveToast");
-
-      const toast = new bootstrap.Toast(toastLiveExample);
-
-      toast.show();
+      if (data.status === "success") {
+        const toastLiveExample = document.getElementById("liveToast");
+        const toast = new bootstrap.Toast(toastLiveExample);
+        toast.show();
+      }
     });
 };
 

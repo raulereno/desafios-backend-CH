@@ -5,6 +5,7 @@ route.get("/", async (req, res) => {
   try {
     res.render("chat", {
       style: "index.css",
+      title: "Chat",
     });
   } catch (error) {
     res.send({ status: "error", error: error.message });

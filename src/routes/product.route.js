@@ -43,7 +43,6 @@ route.post("/createMany", async (req, res) => {
 
 route.put("/:id", async (req, res) => {
   const { id } = req.params;
-  console.log(req.body);
   try {
     const result = await updateProduct(id, req.body);
     res.send({ status: "success", payload: result });

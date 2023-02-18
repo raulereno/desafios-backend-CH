@@ -10,16 +10,23 @@ const getCart = async (id) => {
   const cart = await getCartService(id);
 
   const products = await getProductsService();
+  const findProducts = [];
 
-  const findProducts = cart.products.map((productId) => {
+  cart.products.forEach((productId) => {
     const product = products.find(
       (product) => product._id.toString() === productId
     );
-    return product;
+
+    //Compruebo si los productos ya no han sido eliminados
+    if (product) {
+      findProducts.push(product);
+    }
   });
+
   //Agrego los objetos productos en el carrito
   const formatCart = { ...cart, products: findProducts };
 
+  console.log(formatCart);
   return formatCart;
 };
 

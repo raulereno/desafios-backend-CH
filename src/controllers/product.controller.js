@@ -23,6 +23,9 @@ const createProduct = async (product) => {
 };
 
 const updateProduct = async (id, productUpdated) => {
+  //Sino se especifica imagen eliminamos el campo para que no lo modifique con un string vacio
+  if (!productUpdated.image) delete productUpdated.image;
+
   let result = await updateProductService(id, productUpdated);
 
   return result;
