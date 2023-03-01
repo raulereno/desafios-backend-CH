@@ -1,0 +1,55 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+#navbarNav .navbar-nav {
+  gap: 15px;
+}
+#navbarNav .navbar-nav .nav-item:hover {
+  background-color: rgba(128, 128, 128, 0.315);
+  border-radius: 5px;
+}
+#navbarNav .navbar-nav .nav-item:hover > .nav-link {
+  color: black;
+  font-weight: bolder;
+}
+
+#container_products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 15px;
+}
+
+.card .icon_trash,
+.icon_pencil {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+.card .icon_pencil {
+  margin: 5px 0 0 5px;
+}
+.card .icon_pencil svg {
+  width: 20px;
+  height: 20px;
+  opacity: 0.3;
+}
+.card .icon_trash {
+  right: 0;
+  margin: 5px 5px 0 0;
+}
+.card .icon_trash svg {
+  width: 20px;
+  height: 20px;
+  fill: rgb(134, 0, 0);
+  opacity: 0.3;
+}
+.icon_trash svg:hover,
+.icon_pencil svg:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
