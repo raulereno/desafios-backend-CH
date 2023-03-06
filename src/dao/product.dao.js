@@ -6,10 +6,16 @@ class ProductDAO {
   }
 
   async getAllProducts({ limit, page, query, sort }) {
+    console.log(sort);
+    if (sort !== "asc" && sort !== "desc") {
+      sort = undefined;
+    }
+
     const setLimit = limit ? limit : 10;
     const setPage = page ? Number(page) : 1;
-    const setQuery = query ? { category: query } : {};
     const setSort = sort ? { price: sort } : {};
+
+    const setQuery = query ? { category: query } : {};
     const setStringQuery = query ? "&query=" + query : "";
 
     const options = {
