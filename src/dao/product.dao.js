@@ -39,12 +39,35 @@ class ProductDAO {
 
   async createOneProduct(product) {
     const result = await this.productCollection.create(product);
+    return result;
   }
 
   async createManyProducts(products) {
     const result = await this.productCollection.insertMany(products);
 
     return result;
+  }
+
+  async updateProduct(pid, product) {
+    try {
+      const result = await this.productCollection.updateOne(
+        { _id: pid },
+        product
+      );
+
+      return result;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async deleteProduct(pid) {
+    try {
+      const result = await this.productCollection.deleteOne({ _id: pid });
+      return result;
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
 

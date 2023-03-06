@@ -3,11 +3,11 @@
     <div class="filters_products">
         {{>filters}}
         <section class="pagination_products">
+            {{#if products.docs}}
             {{>paginate}}
             <div id="container_products">
-                {{#if products}}
                 {{#each products.docs}}
-                <div class="card {{this._id}}" style="width: 18rem;">
+                <div class="card {{this._id}}" style="width: 18rem;" onclick="openModalUpdate('{{this._id}}'">
                     <button class="icon_pencil" onclick="openModalUpdate('{{this._id}}')">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                             <path
@@ -30,10 +30,74 @@
                     </div>
                 </div>
                 {{/each}}
+                <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Actualizar Producto</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="form_updateProduct" onsubmit="send_update">
+                                    <label for="input_title">Titulo:</label>
+                                    <input type="text" name="title" id="input_title">
+                                    <label for="input_description">Descripción:</label>
+                                    <input type="text" name="description" id="input_description">
+                                    <label for="input_price">Precio:</label>
+                                    <input type="number" name="price" id="input_price">
+                                    <label for="input_update_image">Imagen url:</label>
+                                    <input type="text" name="image" id="input_update_image">
+                                    <input type="text" name="productId" id="productId" hidden>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Cancelar</button>
+                                <button type="submit" form="form_updateProduct"
+                                    class="btn btn-primary">Actualizar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Actualizar Producto</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="form_updateProduct" onsubmit="send_update">
+                                    <label for="input_title">Titulo:</label>
+                                    <input type="text" name="title" id="input_title">
+                                    <label for="input_description">Descripción:</label>
+                                    <input type="text" name="description" id="input_description">
+                                    <label for="input_price">Precio:</label>
+                                    <input type="number" name="price" id="input_price">
+                                    <label for="input_update_image">Imagen url:</label>
+                                    <input type="text" name="image" id="input_update_image">
+                                    <input type="text" name="productId" id="productId" hidden>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Cancelar</button>
+                                <button type="submit" form="form_updateProduct"
+                                    class="btn btn-primary">Actualizar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
     </div>
 </div>
-{{^}}
-<h2>Productos</h2>
+{{else}}
+<h2>No hay productos con esos parametros</h2>
 {{/if}}
