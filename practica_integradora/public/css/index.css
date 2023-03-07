@@ -1,0 +1,152 @@
+/* HOME VIEW */
+#navbarNav .navbar-nav {
+  gap: 15px;
+}
+#navbarNav .navbar-nav .nav-item:hover {
+  background-color: rgba(128, 128, 128, 0.315);
+  border-radius: 5px;
+}
+#navbarNav .navbar-nav .nav-item:hover > .nav-link {
+  color: black;
+  font-weight: bolder;
+}
+
+#createProduct button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+h1 {
+  text-align: center;
+  color: black;
+}
+.container_cart a svg {
+  width: 25px;
+  height: 25px;
+}
+
+#container_products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 15px;
+}
+
+.card .icon_trash,
+.icon_pencil {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+.card .icon_pencil {
+  margin: 5px 0 0 5px;
+}
+.card .icon_pencil svg {
+  width: 20px;
+  height: 20px;
+  opacity: 0.3;
+}
+.card .icon_trash {
+  right: 0;
+  margin: 5px 5px 0 0;
+}
+.card .icon_trash svg {
+  width: 20px;
+  height: 20px;
+  fill: rgb(134, 0, 0);
+  opacity: 0.3;
+}
+.icon_trash svg:hover,
+.icon_pencil svg:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+#form_updateProduct,
+#create_form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* CHAT VIEW */
+#container_chat {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#chat_form {
+  background: rgba(0, 0, 0, 0.657);
+  padding: 0.25rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  height: 4rem;
+  box-sizing: border-box;
+  backdrop-filter: blur(10px);
+}
+#chat_form input {
+  border: none;
+  padding: 0 1rem;
+  flex-grow: 1;
+  border-radius: 2rem;
+  margin: 0.25rem;
+}
+#chat_form #user_email {
+  flex-grow: 0.1;
+}
+#chat_form input:focus {
+  outline: none;
+}
+#chat_form > button {
+  background: #333;
+  border: none;
+  padding: 0 1rem;
+  margin: 0.25rem;
+  border-radius: 3px;
+  outline: none;
+  color: #fff;
+}
+
+#messages {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow-y: scroll;
+  padding-bottom: 80px;
+}
+#messages > li {
+  padding: 0.5rem 1rem;
+}
+#messages li svg {
+  width: 20px;
+  height: 20px;
+  margin-right: 3px;
+}
+#messages > li:nth-child(odd) {
+  background: #efefef;
+}
+
+/* CART VIEW*/
+table tbody button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+table tbody svg {
+  width: 25px;
+  height: 25px;
+  fill: rgba(143, 0, 0, 0.584);
+}
+table tbody svg:hover {
+  fill: rgb(192, 0, 0);
+  transform: scale(1.05);
+}
+
+h2 {
+  text-align: center;
+}

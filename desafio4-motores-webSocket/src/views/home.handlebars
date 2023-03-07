@@ -1,0 +1,18 @@
+
+
+<div class="container_products">
+    <h1>All products</h1>
+    <div class="products">
+        {{#each products}}
+        <div class="card" style="width: 18rem;">
+            <img src={{this.thumbnails}} class="card-img-top" alt="...">
+            <div class="card-body d-flex flex-column align-items-center">
+                <h5 class="card-title">{{this.title}}</h5>
+                <p class="card-text">{{this.description}}</p>
+                <p class="card-text">Price: ${{this.price}}</p> 
+                <a href="products/detail?productId={{this.id}}" class="btn btn-primary">Go detail</a>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
