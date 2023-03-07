@@ -7,7 +7,6 @@ const productDao = new ProductDAO("Product", productSchema);
 const getProductsService = async (filters) => {
   try {
     const products = await productDao.getAllProducts(filters);
-
     return products;
   } catch (error) {
     throw Error(error);
@@ -33,22 +32,30 @@ const createManyProductsService = async () => {
 };
 
 const updateProductService = async ({ pid }, product) => {
-  if (!product.image) delete product.image;
-
-  const result = await productDao.updateProduct(pid, product);
-
-  return result;
+  try {
+    if (!product.image) delete product.image;
+    const result = await productDao.updateProduct(pid, product);
+    return result;
+  } catch (error) {
+    throw Error(error);
+  }
 };
 
 const createOneProductService = async (product) => {
-  const result = await productDao.createOneProduct(product);
-
-  return result;
+  try {
+    const result = await productDao.createOneProduct(product);
+    return result;
+  } catch (error) {
+    throw Error(error);
+  }
 };
 const deleteProductService = async ({ pid }) => {
-  const result = await productDao.deleteProduct(pid);
-
-  return result;
+  try {
+    const result = await productDao.deleteProduct(pid);
+    return result;
+  } catch (error) {
+    throw Error(error);
+  }
 };
 
 module.exports = {

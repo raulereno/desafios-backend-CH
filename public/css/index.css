@@ -223,12 +223,14 @@ h2 {
 #chat_form input {
   border: none;
   padding: 0 1rem;
-  flex-grow: 1;
   border-radius: 2rem;
   margin: 0.25rem;
 }
 #chat_form #user_email {
-  flex-grow: 0.1;
+  width: 350px;
+}
+#chat_form #user_message {
+  flex-grow: 1;
 }
 #chat_form input:focus {
   outline: none;

@@ -6,11 +6,10 @@ class ProductDAO {
   }
 
   async getAllProducts({ limit, page, query, sort }) {
-    console.log(sort);
     if (sort !== "asc" && sort !== "desc") {
       sort = undefined;
     }
-
+    let products;
     const setLimit = limit ? limit : 10;
     const setPage = page ? Number(page) : 1;
     const setSort = sort ? { price: sort } : {};
@@ -24,8 +23,11 @@ class ProductDAO {
       page: setPage,
       sort: setSort,
     };
-
-    const products = await this.productCollection.paginate(setQuery, options);
+    try {
+      products = await this.productCollection.paginate(setQuery, options);
+    } catch (error) {
+      throw Error(error);
+    }
 
     const myCustomLabels = {
       prevLink: products.hasPrevPage
@@ -49,9 +51,12 @@ class ProductDAO {
   }
 
   async createManyProducts(products) {
-    const result = await this.productCollection.insertMany(products);
-
-    return result;
+    try {
+      const result = await this.productCollection.insertMany(products);
+      return result;
+    } catch (error) {
+      throw Error(error);
+    }
   }
 
   async updateProduct(pid, product) {

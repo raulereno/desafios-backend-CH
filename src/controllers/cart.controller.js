@@ -20,46 +20,62 @@ const getCart = async (req, res) => {
 };
 
 const createCart = async (req, res) => {
-  const result = await createCartService();
-
-  res.status(200).send(result);
+  try {
+    const result = await createCartService();
+    res.status(201).send(result);
+  } catch (error) {
+    res.status(400).send({ status: "error", payload: error.message });
+  }
 };
 
 const addProductToCart = async (req, res) => {
-  const result = await addProductToCartService(req.params);
-
-  res.status(200).send(result);
+  try {
+    const result = await addProductToCartService(req.params);
+    res.status(200).send({ status: "success", payload: result });
+  } catch (error) {
+    res.status(400).send({ status: "error", payload: error.message });
+  }
 };
 
-const updateProductInCart = async (req, res) => {};
-
 const deleteProductInCart = async (req, res) => {
-  const result = await deleteProductInCartService(req.params);
-
-  res.status(200).send(result);
+  try {
+    const result = await deleteProductInCartService(req.params);
+    res.status(200).send({ status: "success", payload: result });
+  } catch (error) {
+    res.status(400).send({ status: "error", payload: error.message });
+  }
 };
 
 const deleteCart = async (req, res) => {
-  const result = await deleteCartService(req.params);
-
-  res.status(200).send(result);
+  try {
+    const result = await deleteCartService(req.params);
+    res.status(200).send({ status: "success", payload: result });
+  } catch (error) {
+    res.status(400).send({ status: "error", payload: error.message });
+  }
 };
 
 const addManyProductsToCart = async (req, res) => {
-  const result = await addManyProductsToCartService(req.body, req.params);
-
-  res.status(200).send(result);
+  try {
+    const result = await addManyProductsToCartService(req.body, req.params);
+    res.status(200).send({ status: "success", payload: result });
+  } catch (error) {
+    res.status(400).send({ status: "error", payload: error.message });
+  }
 };
 
 const updateQuantityProduct = async (req, res) => {
-  const result = await updateQuantityProductService(req.params, req.body);
-  res.status(200).send(result);
+  try {
+    const result = await updateQuantityProductService(req.params, req.body);
+    res.status(200).send({ status: "success", payload: result });
+  } catch (error) {
+    res.status(400).send({ status: "error", payload: error.message });
+  }
 };
 module.exports = {
   getCart,
   createCart,
   addProductToCart,
-  updateProductInCart,
   deleteProductInCart,
   deleteCart,
   addManyProductsToCart,

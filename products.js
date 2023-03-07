@@ -5,7 +5,6 @@ module.exports = products = [
     price: 800,
     image: "/uploads/cepillo.jpg",
     category: "accesorios",
-    pets: "general",
   },
   {
     title: "Champu",
@@ -13,7 +12,6 @@ module.exports = products = [
     price: 600,
     image: "/uploads/champu.jpg",
     category: "accesorios",
-    pets: "general",
   },
   {
     title: "Collar con cascabel",
@@ -21,7 +19,6 @@ module.exports = products = [
     price: 700,
     image: "/uploads/collar_cascabel.jpg",
     category: "accesorios",
-    pets: "general",
   },
   {
     title: "Collares de cuero",
@@ -29,7 +26,6 @@ module.exports = products = [
     price: 1500,
     image: "/uploads/collares_cuero.jpg",
     category: "accesorios",
-    pets: "general",
   },
   {
     title: "Comederos dobles de plastico",
@@ -37,7 +33,6 @@ module.exports = products = [
     price: 1100,
     image: "/uploads/comedero.jpg",
     category: "accesorios",
-    pets: "general",
   },
   {
     title: "Corta Uñas",
@@ -45,7 +40,6 @@ module.exports = products = [
     price: 2000,
     image: "/uploads/corta_uñas.jpg",
     category: "accesorios",
-    pets: "general",
   },
   {
     title: "Varita masticable",
@@ -53,7 +47,6 @@ module.exports = products = [
     price: 300.99,
     image: "/uploads/masticable.jpg",
     category: "accesorios",
-    pets: "general",
   },
   {
     title: "Sobrecitos de Pedigree",
@@ -61,7 +54,6 @@ module.exports = products = [
     price: 600.99,
     image: "/uploads/sobrecitos_pedigree.jpg",
     category: "accesorios",
-    pets: "dogs",
   },
   {
     title: "Pipeta Multidosis",
@@ -70,7 +62,6 @@ module.exports = products = [
     price: 2000.99,
     image: "/uploads/pipeta_multidosis.jpg",
     category: "accesorios",
-    pets: "dogs",
   },
   {
     title: "Colonia Pulgicida",
@@ -79,7 +70,6 @@ module.exports = products = [
     price: 1000,
     image: "/uploads/colonia_pulgicida.jpg",
     category: "farmacia",
-    pets: "general",
   },
   {
     title: "Cepillo de dientes",
@@ -88,7 +78,6 @@ module.exports = products = [
     price: 500.99,
     image: "/uploads/cepillo_dientes.jpg",
     category: "farmacia",
-    pets: "general",
   },
   {
     title: "Pedigree Adulto 7,5kg",
@@ -97,7 +86,6 @@ module.exports = products = [
     price: 2500,
     image: "/uploads/pedigree_adulto_7,5.jpg",
     category: "balanceado",
-    pet: "dogs",
   },
   {
     title: "Excellent Senior Perros",
@@ -106,7 +94,6 @@ module.exports = products = [
     price: 3100,
     image: "/uploads/excellent_adultos_5kg.jpg",
     category: "balanceado",
-    pet: "dogs",
   },
   {
     title: "Excellent Senior Gatos",
@@ -114,7 +101,6 @@ module.exports = products = [
     price: 2800,
     image: "/uploads/excellent_adultos_cat_7,5kg.jpg",
     category: "balanceado",
-    pet: "cats",
   },
   {
     title: "Rascador para gatos",
@@ -122,7 +108,6 @@ module.exports = products = [
     price: 4000,
     image: "/uploads/rascador_2pisos_gato.png",
     category: "balanceado",
-    pet: "cats",
   },
   {
     title: "Collar antiparasitario para gatos",
@@ -130,7 +115,6 @@ module.exports = products = [
     price: 1300.99,
     image: "/uploads/collar_antiparasitario_ext_gatos.jpg",
     category: "farmacia",
-    pet: "cats",
   },
   {
     title: "Gel dentrifico",
@@ -139,7 +123,6 @@ module.exports = products = [
     price: 800.99,
     image: "/uploads/gel_dentrifico_general.jpg",
     category: "farmacia",
-    pet: "general",
   },
   {
     title: "Collar antipulgas",
@@ -147,63 +130,54 @@ module.exports = products = [
     price: 1200,
     image: "/uploads/collar-antipulgas.jpg",
     category: "farmacia",
-    pets: "perros, gatos",
   },
   {
     title: "Juguete mordedor",
     description: "Juguete mordedor para perros",
     price: 500,
     category: "accesorios",
-    pets: "perros",
   },
   {
     title: "Shampoo para perros",
     description: "Shampoo para perros de pelo largo",
     price: 900,
     category: "farmacia",
-    pets: "perros",
   },
   {
     title: "Cepillo para gatos",
     description: "Cepillo para pelaje de gato",
     price: 600,
     category: "accesorios",
-    pets: "gatos",
   },
   {
     title: "Juguete para gatos",
     description: "Juguete para gatos con plumas",
     price: 400,
     category: "accesorios",
-    pets: "gatos",
   },
   {
     title: "Snack para perros",
     description: "Snack de carne para perros",
     price: 200,
     category: "balanceado",
-    pets: "perros",
   },
   {
     title: "Peine para pelo corto",
     description: "Peine para pelaje corto de perro",
     price: 800,
     category: "accesorios",
-    pets: "perros",
   },
   {
     title: "Shampoo para gatos",
     description: "Shampoo para gatos de pelo corto",
     price: 700,
     category: "farmacia",
-    pets: "gatos",
   },
   {
     title: "Juguete interactivo para perros",
     description: "Juguete interactivo para perros con premios",
     price: 1000,
     category: "accesorios",
-    pets: "perros",
   },
   {
     title: "Comida para gatos adultos",
@@ -211,7 +185,6 @@ module.exports = products = [
     price: 1200,
     image: "https://www.mrpanet.org/global_graphics/default-store-350x350.jpg",
     category: "balanceado",
-    pets: "gatos",
   },
   {
     title: "Cepillo para pelo largo",
@@ -219,7 +192,6 @@ module.exports = products = [
     price: 950,
     image: "https://www.mrpanet.org/global_graphics/default-store-350x350.jpg",
     category: "accesorios",
-    pets: "perros, gatos",
   },
   {
     title: "Shampoo para perros con piel sensible",
@@ -227,7 +199,6 @@ module.exports = products = [
     price: 1100,
     image: "https://www.mrpanet.org/global_graphics/default-store-350x350.jpg",
     category: "farmacia",
-    pets: "perros",
   },
   {
     title: "Juguete de peluche para gatos",
@@ -235,7 +206,6 @@ module.exports = products = [
     price: 300,
     image: "https://www.mrpanet.org/global_graphics/default-store-350x350.jpg",
     category: "accesorios",
-    pets: "gatos",
   },
   {
     title: "Comida para cachorros de perro",
@@ -243,7 +213,6 @@ module.exports = products = [
     price: 1800,
     image: "https://www.mrpanet.org/global_graphics/default-store-350x350.jpg",
     category: "balanceado",
-    pets: "perros",
   },
   {
     title: "Juguete para perros",
@@ -251,7 +220,6 @@ module.exports = products = [
     price: 500,
     image: "https://www.mrpanet.org/global_graphics/default-store-350x350.jpg",
     category: "accesorios",
-    pets: "perros",
   },
   {
     title: "Comida para gatos con problemas de sobrepeso",
@@ -259,7 +227,6 @@ module.exports = products = [
     price: 1500,
     image: "https://www.mrpanet.org/global_graphics/default-store-350x350.jpg",
     category: "balanceado",
-    pets: "gatos",
   },
   {
     title: "Shampoo para perros con pulgas y garrapatas",
@@ -267,7 +234,6 @@ module.exports = products = [
     price: 1300,
     image: "https://www.mrpanet.org/global_graphics/default-store-350x350.jpg",
     category: "farmacia",
-    pets: "perros",
   },
   {
     title: "Comida para perros adultos",
@@ -275,6 +241,5 @@ module.exports = products = [
     price: 1400,
     image: "https://www.mrpanet.org/global_graphics/default-store-350x350.jpg",
     category: "balanceado",
-    pets: "perros",
   },
 ];
