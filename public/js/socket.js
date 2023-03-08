@@ -39,7 +39,6 @@ const sendMessages = async () => {
   })
     .then((response) => response.json())
     .then((data) => {
-      window.console.log(data);
       if (data.status === "error") {
         alert(data.error);
       }
