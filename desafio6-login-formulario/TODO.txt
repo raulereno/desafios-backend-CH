@@ -1,0 +1,2 @@
+1. Hacer que el formulario de registro este manejado con un script, asi se notifica al usuario que se registro su usuario.
+2. Usar hash de contraseña
