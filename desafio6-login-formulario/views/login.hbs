@@ -1,6 +1,18 @@
-<form id="login_form">
-    <input type="text" name="username" placeholder="Usuario o email" required>
-    <input type="text" name="password" placeholder="Contraseña" required>
-    <button>Iniciar Sesión</button>
-    <p>No tienes una cuenta? <a href="/register">Registrate</a></p>
-</form>
+<div id="container_login">
+    <form id="login_form">
+        <div>
+            <input type="text" name="username" id="input_username" class="input_login" placeholder="Usuario o email"
+                required>
+            <span class="span_error username_error"></span>
+        </div>
+        <div>
+            <input type="password" name="password" id="input_password" class="input_login" placeholder="Contraseña"
+                required>
+            <span class="span_error password_error"></span>
+        </div>
+
+        <button>Iniciar Sesión</button>
+        <p>No tienes una cuenta? <a href="/register">Registrate</a></p>
+    </form>
+</div>
+<script src="/js/login.js"></script>

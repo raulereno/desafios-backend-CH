@@ -14,9 +14,9 @@ const loginUser = async (req, res, next) => {
 
     if (validPassword) {
       req.session.user = user.username;
-      res.send("login success");
+      res.status(200).send({ status: "success", payload: "login success" });
     } else {
-      res.send("login failed");
+      throw new Error("Constraseña incorrecta");
     }
   } catch (error) {
     next(error);
@@ -29,12 +29,23 @@ const formRegisterUser = (req, res) => {
 
 const createUser = async (req, res, next) => {
   try {
-    await createUserService(req.body);
+    const newUser = await createUserService(req.body);
 
-    res.redirect("/login");
+    res.cookie("cartId", newUser.cartId);
+
+    res
+      .status(201)
+      .json({ status: "success", payload: "Usuario creado correctamente" });
   } catch (error) {
     next(error);
   }
+};
+const logoutUser = (req, res) => {
+  req.session.destroy((err) => {
+    if (!err) {
+      res.redirect("/login");
+    } else res.send({ status: "Logout Error", body: err });
+  });
 };
 
 module.exports = {
@@ -42,4 +53,5 @@ module.exports = {
   loginUser,
   formRegisterUser,
   createUser,
+  logoutUser,
 };

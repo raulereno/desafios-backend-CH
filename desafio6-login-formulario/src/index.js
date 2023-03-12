@@ -10,10 +10,16 @@ const errorHandler = require("./middlewares/errorHandler");
 const MongoStore = require("connect-mongo");
 const MONGO_URL = process.env.MONGO_URL;
 const app = express();
+
+const hbsHelpers = require("./helpers/index.js");
+
 app.engine(
   ".hbs",
   engine({
     extname: ".hbs",
+    helpers: {
+      ...hbsHelpers,
+    },
   })
 );
 
@@ -22,7 +28,6 @@ app.use(
     store: MongoStore.create({
       mongoUrl: MONGO_URL,
       mongoOptions: { useUnifiedTopology: true },
-      ttl: 15,
     }),
     secret: "123456789",
     resave: false,
@@ -32,7 +37,9 @@ app.use(
 app.set("views", path.join(__dirname, "../views"));
 app.set("view engine", "hbs");
 app.use(express.static(path.join(__dirname, "../public")));
-app.use(cookieParser());
+app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
+
+app.use(cookieParser("123456789"));
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -40,7 +47,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("", routes);
 
 app.get("/", (req, res) => {
-  res.redirect("/login");
+  res.redirect("/products");
 });
 
 app.use(errorHandler);
