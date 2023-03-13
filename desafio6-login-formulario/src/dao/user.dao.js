@@ -21,17 +21,7 @@ class UserDAO {
 
   async findUser(user) {
     let userInDB;
-    //No le veo mucha seguridad a este metodo,yo lo guardaria en la bd con la password hasheada
-    if (
-      user.username === "adminCoder@coder.com" &&
-      user.password === "adminCod3r123"
-    ) {
-      userInDB = this.createUser({
-        ...user,
-        username: "admin",
-        email: user.username,
-      });
-    } else if (user.username.includes("@")) {
+    if (user.username.includes("@")) {
       user.email = user.username;
       delete user.username;
       userInDB = await this.userCollection.findOne({

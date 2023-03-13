@@ -24,6 +24,8 @@ const userSchema = mongoose.Schema({
 
 userSchema.pre("save", function (next) {
   const user = this;
+  //No le veo mucha seguridad a este metodo,yo lo guardaria en la bd con la password hasheada
+
   if (
     user.email === "adminCoder@coder.com" &&
     user.password === "adminCod3r123"
