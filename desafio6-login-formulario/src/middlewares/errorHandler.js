@@ -34,8 +34,6 @@ const invalidCredentials = (err, res) => {
 };
 
 const errorHandler = (err, req, res, next) => {
-  console.log(err);
-
   try {
     if (err.code == 11000) return (err = handleDuplicateKeyErro(err, res));
     if (err.message == "Usuario inexistente") return (err = notFound(err, res));

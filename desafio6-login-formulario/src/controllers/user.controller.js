@@ -7,6 +7,7 @@ const { isValidPassword } = require("../utils/passwordHash");
 const formLoginUser = (req, res) => {
   res.render("login");
 };
+
 const loginUser = async (req, res, next) => {
   try {
     const user = await loginUserService(req.body);
