@@ -48,9 +48,7 @@ const formRegisterUser = (req, res) => {
 
 const createUser = async (req, res, next) => {
   try {
-    const newUser = await createUserService(req.body);
-
-    res.cookie("cartId", newUser.cartId);
+    await createUserService(req.body);
 
     res
       .status(201)

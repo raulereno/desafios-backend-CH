@@ -10,6 +10,7 @@ const { getUserByUsername } = require("../services/user.service");
 const getAllProducts = async (req, res) => {
   const products = await getProductsService(req.query);
   const user = req.session?.user;
+  res.cookie("cartId", user.cartId);
 
   res.render("home", {
     title: "Desafio - Productos",

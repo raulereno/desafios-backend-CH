@@ -20,7 +20,6 @@ userRoute.get(
   passport.authenticate("github", { failureRedirect: "/login" }),
   async function (req, res) {
     // Successful authentication, redirect home.
-
     req.session.user = req.user;
     res.redirect("/products");
   }
