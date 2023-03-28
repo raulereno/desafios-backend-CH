@@ -1,0 +1,13 @@
+<nav class="container_pagination">
+    <ul class="pagination">
+        {{#if products.prevLink}}
+            <li class="page-item"><a class="page-link" href="{{products.prevLink}}">Previous</a></li>
+         {{/if}}
+        {{#forPages products.totalPages products.page products.limit products.query }}
+            {{this}}
+        {{/forPages}}
+        {{#if products.nextLink}}
+            <li class="page-item"><a class="page-link" href="{{products.nextLink}}">Next</a></li>
+        {{/if}}
+    </ul>
+</nav>
