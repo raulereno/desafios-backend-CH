@@ -1,6 +1,11 @@
-const app = require("./src/server");
+require("dotenv").config();
+
+const { server } = require("./src/socket");
 const PORT = process.env.PORT;
 
-const server = app.listen(PORT, () => {
-  console.log(`Server listening in PORT:${server.address().port}`);
+server.listen(PORT, () => {
+  console.log(`Server listening in port ${server.address().port}`);
+  console.log(`http://localhost:${server.address().port}/`);
 });
+
+server.on("error", (error) => console.log(error));
