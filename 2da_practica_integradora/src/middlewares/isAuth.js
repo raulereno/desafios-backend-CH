@@ -1,6 +1,7 @@
 const { findUserService } = require("../services/user.service");
 
 const isAuth = async (req, res, next) => {
+  
   const user = await findUserService(req.user);
 
   if (user?.rol === "admin") {

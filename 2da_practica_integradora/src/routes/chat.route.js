@@ -13,6 +13,6 @@ route.get(
   passport.authenticate("jwt", { session: false }),
   getAllMessages
 );
-route.post("/", passport.authenticate("jwt", { session: false }), addMessages);
+route.post("/", passport.authenticate("jwt", { session: false ,failureRedirect:"/login"}), addMessages);
 
 module.exports = route;
