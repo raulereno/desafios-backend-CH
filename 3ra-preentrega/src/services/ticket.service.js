@@ -1,12 +1,11 @@
-const TicketDao = require("../dao/ticket.dao");
-const ticketSchema = require("../models/ticket.model");
+const TicketRepository = require("./../dao/repositories/ticket.repository");
 
-const ticketDao = new TicketDao("Ticket", ticketSchema);
+const ticketRepository = new TicketRepository();
 
 const createTicketService = async (ticket) => {
   try {
     console.log(ticket);
-    const newTicket = await ticketDao.createTicket(ticket);
+    const newTicket = await ticketRepository.createTicket(ticket);
     return newTicket;
   } catch (error) {
     throw Error(error);

@@ -1,12 +1,11 @@
 const products = require("../../products");
-const ProductDAO = require("../dao/products.dao");
-const productSchema = require("../models/product.model");
+const ProductRepository = require("../dao/repositories/product.repository");
 
-const productDao = new ProductDAO("Product", productSchema);
+const productRepository = new ProductRepository();
 
 const getProductsService = async (filters) => {
   try {
-    const products = await productDao.getAllProducts(filters);
+    const products = await productRepository.getAllProducts(filters);
     return products;
   } catch (error) {
     throw Error(error);
@@ -15,7 +14,7 @@ const getProductsService = async (filters) => {
 
 const getOneProductService = async (pid) => {
   try {
-    const product = await productDao.getOneProduct(pid);
+    const product = await productRepository.getOneProduct(pid);
     return product;
   } catch (error) {
     throw Error(error);
@@ -24,7 +23,7 @@ const getOneProductService = async (pid) => {
 
 const createProductService = async (product) => {
   try {
-    const products = await productDao.createProduct(product);
+    const products = await productRepository.createProduct(product);
     return products;
   } catch (error) {
     throw Error(error);
@@ -32,7 +31,7 @@ const createProductService = async (product) => {
 };
 const createManyProductsService = async () => {
   try {
-    const result = await productDao.createManyProducts(products);
+    const result = await productRepository.createManyProducts(products);
 
     return result;
   } catch (error) {
@@ -43,7 +42,7 @@ const createManyProductsService = async () => {
 const updateProductService = async ({ pid }, product) => {
   try {
     if (!product.image) delete product.image;
-    const result = await productDao.updateProduct(pid, product);
+    const result = await productRepository.updateProduct(pid, product);
     return result;
   } catch (error) {
     throw Error(error);
@@ -52,7 +51,7 @@ const updateProductService = async ({ pid }, product) => {
 
 const createOneProductService = async (product) => {
   try {
-    const result = await productDao.createOneProduct(product);
+    const result = await productRepository.createOneProduct(product);
     return result;
   } catch (error) {
     throw Error(error);
@@ -60,7 +59,7 @@ const createOneProductService = async (product) => {
 };
 const deleteProductService = async ({ pid }) => {
   try {
-    const result = await productDao.deleteProduct(pid);
+    const result = await productRepository.deleteProduct(pid);
     return result;
   } catch (error) {
     throw Error(error);

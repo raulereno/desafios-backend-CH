@@ -1,9 +1,8 @@
-const mongoose = require("mongoose");
 const ProductDto = require("./DTOs/product.dto");
-
+const Product = require("./../models/product.model");
 class ProductDAO {
-  constructor(collection, schema) {
-    this.productsCollection = mongoose.model(collection, schema);
+  constructor() {
+    this.productsCollection = Product;
   }
 
   async getAllProducts({ limit, page, query, sort }) {

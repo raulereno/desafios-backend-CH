@@ -1,4 +1,4 @@
-require("./dao/index");
+require("./dao/db");
 const cookieParser = require("cookie-parser");
 const express = require("express");
 const morgan = require("morgan");

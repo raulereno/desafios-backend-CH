@@ -1,30 +1,30 @@
-const UserDAO = require("../dao/user.dao");
-const userSchema = require("../models/user.model");
+const UserRepository = require("../dao/repositories/user.repository");
+
 const { createCartService } = require("./cart.service");
-const userDao = new UserDAO("User", userSchema);
+const userRepository = new UserRepository();
 
 const createUserService = async (user) => {
   const newCart = await createCartService();
 
-  const newUser = await userDao.createUser(user, newCart._id);
+  const newUser = await userRepository.createUser(user, newCart._id);
 
   return newUser;
 };
 
 const getUserByEmailService = async (email) => {
-  const user = await userDao.findUserByEmail(email);
+  const user = await userRepository.findUserByEmail(email);
 
   return user;
 };
 
 const getUserByUsername = async (username) => {
-  const user = await userDao.getUserByUsername(username);
+  const user = await userRepository.getUserByUsername(username);
 
   return user;
 };
 
 const findUserService = async (user) => {
-  const userInDB = await userDao.findUser(user);
+  const userInDB = await userRepository.findUser(user);
 
   return userInDB;
 };

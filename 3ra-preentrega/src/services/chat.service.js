@@ -1,10 +1,10 @@
-const ChatDao = require("../dao/chat.dao");
-const messageSchema = require("../models/message.model");
-const chatDAO = new ChatDao("messages", messageSchema);
+const ChatRepository = require("../dao/repositories/chat.repository");
+
+const chatRepository = new ChatRepository();
 
 const getMessagesServices = async () => {
   try {
-    let response = await chatDAO.getAllMessages();
+    let response = await chatRepository.getAllMessages();
     return response;
   } catch (error) {
     throw Error(error);
@@ -13,7 +13,7 @@ const getMessagesServices = async () => {
 
 const addMessageServices = async (message) => {
   try {
-    let response = await chatDAO.createMessage(message);
+    let response = await chatRepository.createMessage(message);
     return response;
   } catch (error) {
     throw Error(error);

@@ -1,11 +1,10 @@
-const CartDAO = require("../dao/cart.dao");
-const cartSchema = require("../models/cart.model");
+const CartRepository = require("../dao/repositories/cart.repository");
 
-const cartServices = new CartDAO("Cart", cartSchema);
+const cartRepository = new CartRepository();
 
 const getCartService = async (cartId) => {
   try {
-    const result = await cartServices.getCartById(cartId);
+    const result = await cartRepository.getCartById(cartId);
     return result;
   } catch (error) {
     throw Error(error);
@@ -14,7 +13,7 @@ const getCartService = async (cartId) => {
 
 const createCartService = async () => {
   try {
-    const result = await cartServices.createCart();
+    const result = await cartRepository.createCart();
     return result;
   } catch (error) {
     throw Error(error);
@@ -23,7 +22,7 @@ const createCartService = async () => {
 
 const addProductToCartService = async ({ cid, pid }) => {
   try {
-    const result = await cartServices.addProductToCart(cid, pid);
+    const result = await cartRepository.addProductToCart(cid, pid);
     return result;
   } catch (error) {
     throw Error(error);

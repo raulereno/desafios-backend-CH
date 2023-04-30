@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
-
+const Cart = require("./../models/cart.model");
 class CartDAO {
-  constructor(collection, schema) {
-    this.cartCollection = mongoose.model(collection, schema);
+  constructor() {
+    this.cartCollection = Cart;
   }
 
   async createCart() {
@@ -10,7 +10,7 @@ class CartDAO {
 
     return result;
   }
-  async getCartById({ cid }) {
+  async getCartById(cid) {
     const result = await this.cartCollection
       .findOne({ _id: cid })
       .populate("products.product")

@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
-
+const User = require("./../models/user.model");
 class UserDAO {
-  constructor(collection, schema) {
-    this.userCollection = mongoose.model(collection, schema);
+  constructor() {
+    this.userCollection = User;
   }
 
   async getUserByUsername(username) {

@@ -1,9 +1,10 @@
 const mongoose = require("mongoose");
 const MessageDto = require("./DTOs/message.dto");
+const Message = require("./../models/message.model");
 
 class ChatDao {
-  constructor(collection, schema) {
-    this.chatCollection = mongoose.model(collection, schema);
+  constructor() {
+    this.chatCollection = Message;
   }
 
   async getAllMessages() {

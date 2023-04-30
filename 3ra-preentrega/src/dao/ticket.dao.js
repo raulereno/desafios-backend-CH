@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
-
+const Ticket = require("./../models/ticket.model");
 class TicketDao {
-  constructor(collection, schema) {
-    this.ticketCollection = mongoose.model(collection, schema);
+  constructor() {
+    this.ticketCollection = Ticket;
   }
   async createTicket(ticket) {
     console.log(ticket);

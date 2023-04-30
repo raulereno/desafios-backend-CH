@@ -23,11 +23,29 @@ const purchaseProducts = () => {
           if (res.status === "success") {
             Swal.fire({
               title:
-                "Revisa tu mail " +
+                "Pronto recibiras un mail a " +
                 res.payload.purchaser +
                 " para continuar con el paso final",
-              html: `<p>Total: $${res.payload.amount}</p> <p>Codigo:${res.payload.code}</p> `,
+              html: `<p>Total: $${res.payload.amount}</p> <p>Codigo: <strong>${res.payload.code}</strong></p> <h3>Seras redirigido al Inicio en <b></b> milliseconds.</h3>`,
               icon: "success",
+              timer: 10000,
+              timerProgressBar: true,
+              didOpen: () => {
+                Swal.showLoading();
+                const b = Swal.getHtmlContainer().querySelector("b");
+                timerInterval = setInterval(() => {
+                  b.textContent = Swal.getTimerLeft();
+                }, 100);
+              },
+              willClose: () => {
+                clearInterval(timerInterval);
+              },
+            }).then((result) => {
+              console.log(result);
+              /* Read more about handling dismissals below */
+              if (result.dismiss === Swal.DismissReason.timer) {
+                window.location.replace("/products");
+              }
             });
           }
         });

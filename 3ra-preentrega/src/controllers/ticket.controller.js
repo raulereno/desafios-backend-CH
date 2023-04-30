@@ -8,14 +8,16 @@ const {
 } = require("../services/products.service");
 const { createTicketService } = require("../services/ticket.service");
 const { v4: uuidv4 } = require("uuid");
+const sendTicketMail = require("../utils/nodemailer");
 
 const purchaseProducts = async (req, res) => {
   try {
+    let ticket;
+    let resultMailing;
     const cart = await getCartService(req.params);
 
     let sum = 0;
     const productsTicket = [];
-    let ticket;
 
     for (let index = 0; index < cart.products.length; index++) {
       if (cart.products[index].quantity <= cart.products[index].product.stock) {
@@ -43,7 +45,13 @@ const purchaseProducts = async (req, res) => {
         purchase_datetime: new Date(),
         amount: sum,
         purchaser: req.user.username,
+        products: productsTicket,
       });
+      resultMailing = sendTicketMail(
+        ticket,
+        req.user,
+        "http://localhost:3001/payment"
+      );
     }
 
     res.status(201).send({ status: "success", payload: ticket });
