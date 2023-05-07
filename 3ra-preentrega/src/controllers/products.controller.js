@@ -36,12 +36,12 @@ const updateProduct = async (req, res) => {
     res.status(400).send({ status: "error", payload: error.message });
   }
 };
-const createOneProduct = async (req, res) => {
+const createOneProduct = async (req, res, next) => {
   try {
     const result = await createOneProductService(req.body);
     res.status(200).send({ status: "success", payload: result });
   } catch (error) {
-    res.status(400).send({ status: "error", payload: error.message });
+    next(error);
   }
 };
 
@@ -65,6 +65,7 @@ const deleteProduct = async (req, res) => {
 
 module.exports = {
   getAllProducts,
+  getOneProduct,
   createOneProduct,
   createManyProducts,
   updateProduct,

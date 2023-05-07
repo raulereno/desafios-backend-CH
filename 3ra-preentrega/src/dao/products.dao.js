@@ -51,21 +51,24 @@ class ProductDAO {
   }
 
   async createOneProduct(product) {
-    const { title, description, price, image, category, stock } = product;
-    const newProduct = new ProductDto(
-      title,
-      description,
-      price,
-      stock,
-      category,
-      image
-    );
-    const result = await this.productsCollection.create(newProduct);
-    return result;
+    try {
+      const { title, description, price, image, category, stock } = product;
+      const newProduct = new ProductDto(
+        title,
+        description,
+        price,
+        stock,
+        category,
+        image
+      );
+      const result = await this.productsCollection.create(newProduct);
+      return result;
+    } catch (error) {
+      throw Error(error);
+    }
   }
 
   async createManyProducts(products) {
-    console.log(products);
     try {
       const newProducts = products.map((product) => {
         const { title, description, price, image, category, stock } = product;

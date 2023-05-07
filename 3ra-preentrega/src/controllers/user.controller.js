@@ -18,6 +18,8 @@ const loginUser = async (req, res, next) => {
     if (validPassword) {
       const access_token = generateAuthToken(user.email);
 
+      console.log(access_token);
+
       res.cookie("access_token", access_token);
 
       res.status(200).send({
@@ -29,7 +31,6 @@ const loginUser = async (req, res, next) => {
       throw new Error("Constraseña incorrecta");
     }
   } catch (error) {
-    console.log(error);
     next(error);
   }
 };
