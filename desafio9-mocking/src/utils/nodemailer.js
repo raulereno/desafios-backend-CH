@@ -84,7 +84,7 @@ const generateBodyMail = (ticket, user, linkToPay) => {
 
 const sendTicketMail = async (ticket, user, linkToPay) => {
   let result = await transport.sendMail({
-    from: "Ecommerce <tuco@gmail.com> ",
+    from: "Ecommerce <raulereno@gmail.com> ",
     to: user.username,
     subject: "Ticket de Compra Ecommerce",
     html: generateBodyMail(ticket, user, linkToPay),
