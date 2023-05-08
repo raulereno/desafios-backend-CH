@@ -138,6 +138,15 @@ const createProduct = async () => {
           title: res.message,
           showConfirmButton: false,
         });
+      } else if (res.code === 400 && res.message === "ValidationError") {
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          html: `<ul> ${Object.keys(res.errores).map((elm) => {
+            return `<li>${elm}: ${res.errores[elm]}</li>`;
+          })} </ul>`,
+          showConfirmButton: false,
+        });
       } else {
         window.location.reload();
       }

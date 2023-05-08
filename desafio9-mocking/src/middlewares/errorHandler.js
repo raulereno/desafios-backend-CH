@@ -9,16 +9,11 @@ const handleDuplicateKeyError = (err, res) => {
 };
 
 const handleValidationError = (err, res) => {
-  console.log(err);
+  const bodyError = JSON.parse(err.message);
 
-  let errors = Object.values(err.errors).map((element) => element.message);
-  let fields = Object.values(err.errors).map((element) => element.path);
+  console.log(bodyError);
 
-  console.log(fields);
-
-  if (errors.length > 1) {
-    return res.status(400).send({ messages: errors, fields: fields });
-  }
+  return res.status(400).send({ code: 400, ...bodyError });
 };
 
 const notFound = (err, res) => {

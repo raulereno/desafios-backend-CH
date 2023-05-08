@@ -1,5 +1,6 @@
 const ProductDto = require("./DTOs/product.dto");
 const Product = require("./../models/product.model");
+const ValidationError = require("./errors/ValidationError");
 class ProductDAO {
   constructor() {
     this.productsCollection = Product;
@@ -64,7 +65,14 @@ class ProductDAO {
       const result = await this.productsCollection.create(newProduct);
       return result;
     } catch (error) {
-      throw Error(error);
+      if (error.name === "ValidationError") {
+        const errores = {};
+        for (let campo in error.errors) {
+          errores[campo] = error.errors[campo].message;
+        }
+
+        throw JSON.stringify({ message: "ValidationError", errores });
+      }
     }
   }
 

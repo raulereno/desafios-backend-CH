@@ -1,3 +1,4 @@
+const ValidationError = require("../dao/errors/ValidationError");
 const {
   getProductsService,
   updateProductService,
@@ -42,6 +43,17 @@ const createOneProduct = async (req, res, next) => {
     res.status(200).send({ status: "success", payload: result });
   } catch (error) {
     next(error);
+    // if (error instanceof ValidationError) {
+    //   const errores = Object.keys(error).map((campo) => {
+    //     return {
+    //       campo,
+    //       mensaje: error.errors[campo].message,
+    //     };
+    //   });
+    //   res.status(400).json({ errores });
+    // } else {
+    //   res.status(500).json({ mensaje: "Error interno del servidor" });
+    // }
   }
 };
 

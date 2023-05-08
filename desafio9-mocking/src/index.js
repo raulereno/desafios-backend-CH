@@ -12,6 +12,7 @@ const initializePassport = require("./config/passport.config");
 
 const hbsHelpers = require("./helpers/index.js");
 const passport = require("passport");
+const { getProducstMock } = require("./utils/mockingProducts");
 
 app.engine(
   ".hbs",
@@ -44,6 +45,10 @@ app.get(
     res.send(req.user);
   }
 );
+
+app.get("/mockingproducts", (req, res) => {
+  res.send({ status: "success", payload: getProducstMock() });
+});
 
 app.get("/", (req, res) => {
   res.redirect("/products");
