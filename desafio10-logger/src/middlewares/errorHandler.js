@@ -1,5 +1,7 @@
-const handleDuplicateKeyError = (err, res) => {
+const handleDuplicateKeyError = (err, req, res) => {
   const field = Object.keys(err.keyValue);
+
+  req.logger.warning(`Una cuenta con ese ${field} ya existe`)
 
   res.status(409).send({
     status: "error",
@@ -8,15 +10,17 @@ const handleDuplicateKeyError = (err, res) => {
   });
 };
 
-const handleValidationError = (err, res) => {
+const handleValidationError = (err, req, res) => {
   const bodyError = JSON.parse(err.message);
 
-  console.log(bodyError);
+  req.logger.warning(bodyError)
 
   return res.status(400).send({ code: 400, ...bodyError });
 };
 
-const notFound = (err, res) => {
+const notFound = (err, req, res) => {
+  req.logger.warning("Usuario no encontrado")
+
   res.status(404).send({
     status: "Not found",
     message: err.message,
@@ -24,7 +28,10 @@ const notFound = (err, res) => {
   });
 };
 
-const invalidCredentials = (err, res) => {
+const invalidCredentials = (err, req, res) => {
+
+  req.logger.warning("Credenciales del usuario invalidas")
+
   res.status(403).send({
     status: "Error",
     message: err.message,
@@ -33,20 +40,21 @@ const invalidCredentials = (err, res) => {
 };
 
 const errorHandler = (err, req, res, next) => {
-  // console.log(err.message);
+
 
   try {
     if (err.code == 11000) {
-      return (err = handleDuplicateKeyError(err, res));
+      return (err = handleDuplicateKeyError(err, req, res));
     }
     if (err.message == "Usuario inexistente") {
-      return (err = notFound(err, res));
+      return (err = notFound(err, req, res));
     }
     if (err.message == "Constraseña incorrecta") {
-      return (err = invalidCredentials(err, res));
+      return (err = invalidCredentials(err, req, res));
     }
-    return (err = handleValidationError(err, res));
+    return (err = handleValidationError(err, req, res));
   } catch (error) {
+    req.logger.error(`Un error no manejado a ocurrido: ${err.message}`)
     res.status(500).send("An unknown error ocurred");
   }
 };

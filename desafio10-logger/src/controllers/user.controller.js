@@ -6,6 +6,7 @@ const { generateAuthToken } = require("../utils/jwt");
 const { isValidPassword } = require("../utils/passwordHash");
 
 const formLoginUser = (req, res) => {
+  req.logger.fatal("hola")
   res.render("login");
 };
 
@@ -18,7 +19,6 @@ const loginUser = async (req, res, next) => {
     if (validPassword) {
       const access_token = generateAuthToken(user.email);
 
-      console.log(access_token);
 
       res.cookie("access_token", access_token);
 

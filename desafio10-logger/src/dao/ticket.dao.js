@@ -5,7 +5,6 @@ class TicketDao {
     this.ticketCollection = Ticket;
   }
   async createTicket(ticket) {
-    console.log(ticket);
     const newTicket = await this.ticketCollection.create(ticket);
 
     return newTicket;

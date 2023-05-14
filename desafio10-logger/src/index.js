@@ -14,6 +14,8 @@ const hbsHelpers = require("./helpers/index.js");
 const passport = require("passport");
 const { getProducstMock } = require("./utils/mockingProducts");
 
+const addLogger = require("./utils/logger");
+
 app.engine(
   ".hbs",
   engine({
@@ -29,7 +31,10 @@ app.set("view engine", "hbs");
 app.use(express.static(path.join(__dirname, "../public")));
 app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
 
-app.use(morgan("dev"));
+//Logger
+app.use(addLogger)
+
+// app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser("coderSecret"));
@@ -46,11 +51,22 @@ app.get(
   }
 );
 
+app.get("/loggerTest", (req, res) => {
+  req.logger.fatal("Fatal log")
+  req.logger.error("Error log")
+  req.logger.warning("Warning log")
+  req.logger.info("Info log")
+  req.logger.http("Http log")
+  req.logger.debug("Debug log")
+  res.send("Logs enviados")
+})
+
 app.get("/mockingproducts", (req, res) => {
   res.send({ status: "success", payload: getProducstMock() });
 });
 
 app.get("/", (req, res) => {
+
   res.redirect("/products");
 });
 

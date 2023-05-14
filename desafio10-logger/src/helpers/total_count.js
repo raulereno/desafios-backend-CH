@@ -1,5 +1,4 @@
 module.exports = totalCount = (products) => {
-  console.log(products);
 
   let sum = 0;
   products.forEach((product) => {

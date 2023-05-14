@@ -32,14 +32,12 @@ class ProductDAO {
 
     const myCustomLabels = {
       prevLink: products.hasPrevPage
-        ? `http://localhost:3001/products?page=${
-            setPage - 1
-          }&limit=${setLimit}${setStringQuery}`
+        ? `http://localhost:3001/products?page=${setPage - 1
+        }&limit=${setLimit}${setStringQuery}`
         : null,
       nextLink: products.hasNextPage
-        ? `http://localhost:3001/products?page=${
-            setPage + 1
-          }&limit=${setLimit}${setStringQuery}`
+        ? `http://localhost:3001/products?page=${setPage + 1
+        }&limit=${setLimit}${setStringQuery}`
         : null,
     };
 
@@ -106,7 +104,7 @@ class ProductDAO {
 
       return result;
     } catch (error) {
-      console.log(error);
+      throw Error(error);
     }
   }
 
@@ -115,7 +113,7 @@ class ProductDAO {
       const result = await this.productsCollection.deleteOne({ _id: pid });
       return result;
     } catch (error) {
-      console.log(error);
+      throw Error(error);
     }
   }
 }

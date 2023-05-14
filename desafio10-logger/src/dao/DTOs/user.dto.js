@@ -1,6 +1,5 @@
 class UserDto {
   constructor({ username, email, password, cartId }) {
-    console.log(first_name);
 
     this.first_name = username;
     this.last_name = "";

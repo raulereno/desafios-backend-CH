@@ -41,7 +41,6 @@ const purchaseProducts = () => {
                 clearInterval(timerInterval);
               },
             }).then((result) => {
-              console.log(result);
               /* Read more about handling dismissals below */
               if (result.dismiss === Swal.DismissReason.timer) {
                 window.location.replace("/products");
