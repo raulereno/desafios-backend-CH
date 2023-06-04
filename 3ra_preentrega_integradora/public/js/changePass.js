@@ -40,7 +40,6 @@ const sendNewPassword = async (newPassword, token) => {
             setError(data.message)
         }
         if (data.code === 202) {
-            //TODO: Sweet alert que redirija
             successChange(data.message)
             //Alerta con timer
             let timerInterval

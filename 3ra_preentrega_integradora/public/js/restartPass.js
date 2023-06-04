@@ -40,7 +40,6 @@ const setError = (message, input) => {
 }
 
 const successLink = (message, input) => {
-    console.log("a");
     const span = document.getElementById("username_restart_error")
     span.innerHTML = message
     span.className = "span_success"

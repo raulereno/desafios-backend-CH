@@ -62,11 +62,9 @@ const formRecoverPass = (req, res) => {
 };
 
 const changePassword = async (req, res, next) => {
-  console.log("a");
   const { email } = req.body;
   try {
     const user = await getUserByEmailService(email);
-    console.log(user);
     if (!user) throw Error("Usuario inexistente")
 
     const token = generateAuthToken(user.email, "1h")

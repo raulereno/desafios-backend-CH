@@ -19,7 +19,6 @@ class CartDAO {
       })
       .lean();
 
-    console.log(result);
 
     return result;
   }
