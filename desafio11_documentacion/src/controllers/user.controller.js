@@ -10,7 +10,7 @@ const { sendResetPassEmail } = require("../utils/nodemailer");
 const { isValidPassword, createHash } = require("../utils/passwordHash");
 
 const formLoginUser = (req, res) => {
-  res.render("login");
+  res.render("login", { title: "Iniciar Sesión" });
 };
 
 
