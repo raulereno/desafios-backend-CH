@@ -6,6 +6,7 @@ const path = require("path");
 const { engine } = require("express-handlebars");
 const routes = require("./routes");
 const errorHandler = require("./middlewares/errorHandler");
+const swaggerUiExpress = require("swagger-ui-express")
 
 const app = express();
 const initializePassport = require("./config/passport.config");
@@ -13,8 +14,24 @@ const initializePassport = require("./config/passport.config");
 const hbsHelpers = require("./helpers/index.js");
 const passport = require("passport");
 const { getProducstMock } = require("./utils/mockingProducts");
-
 const addLogger = require("./utils/logger");
+const swaggerJSDoc = require("swagger-jsdoc");
+
+
+const swaggerOptions = {
+  definition: {
+    openapi: "3.0.1",
+    info: {
+      title: "E-commerce",
+      description: "API"
+    }
+  },
+  apis: [`${__dirname}\\docs\\**\\*.yaml`]
+}
+
+const specs = swaggerJSDoc(swaggerOptions)
+
+app.use("/apidocs", swaggerUiExpress.serve, swaggerUiExpress.setup(specs))
 
 app.engine(
   ".hbs",

@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const mongoosePaginate = require("mongoose-paginate-v2");
+const cartModel = require("./cart.model");
 
 const productSchema = mongoose.Schema({
   title: { type: String, unique: true, required: true, max: 30 },
@@ -15,11 +16,24 @@ const productSchema = mongoose.Schema({
   stock: { type: Number, required: true },
 });
 
-productSchema.pre('save', function (next) {
+productSchema.pre('save', async function (next) {
   const product = this
   if (!product.owner || product.owner === process.env.ADMIN_EMAIL) product.owner = 'admin'
   next()
-})
+});
+
+productSchema.pre('remove', async function (next) {
+  const productId = this._id;
+
+  // Eliminar referencias al producto en los carritos
+  await cartModel.updateMany(
+    { "products.product": productId },
+    { $pull: { products: { product: productId } } }
+  );
+
+  next();
+});
+
 
 productSchema.plugin(mongoosePaginate);
 

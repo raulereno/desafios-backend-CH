@@ -13,8 +13,13 @@ class CartDAO {
   async getCartById(cid) {
     const result = await this.cartCollection
       .findOne({ _id: cid })
-      .populate("products.product")
+      .populate({
+        path: "products.product",
+
+      })
       .lean();
+
+    console.log(result);
 
     return result;
   }

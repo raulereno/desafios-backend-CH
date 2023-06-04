@@ -4,7 +4,15 @@ const cartRepository = new CartRepository();
 
 const getCartService = async (cartId) => {
   try {
-    const result = await cartRepository.getCartById(cartId);
+    let result = await cartRepository.getCartById(cartId);
+
+    //Elimino todos los productos que se han borrado
+    result.products = result?.products.filter(e => {
+      if (e.product !== null) {
+        return e
+      }
+    })
+
     return result;
   } catch (error) {
     throw Error(error);
