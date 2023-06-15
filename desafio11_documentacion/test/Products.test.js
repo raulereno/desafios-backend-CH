@@ -21,7 +21,7 @@ describe('testeo de productos', () => {
                 code: "1500",
                 price: 100,
                 stock: 10,
-                category: "Categoria de prueba",
+                category: "Prueba",
                 thumbnail: "lorem.jpg",
             };
             const { _body } = await requester
@@ -37,11 +37,11 @@ describe('testeo de productos', () => {
             let mockUpdateProduct = {
                 title: "Producto de prueba modificado v2",
                 description: "Lorem impsum",
-                code: "1500",
+                code: "2100",
                 price: 20,
                 stock: 10,
-                category: "Categoria de prueba",
-                thumbnail: "thumbnail.jpg",
+                category: "Prueba",
+                thumbnail: "lorem2.jpg",
             };
             const { _body } = await requester
                 .put(`/products/${createdProductId}`)
