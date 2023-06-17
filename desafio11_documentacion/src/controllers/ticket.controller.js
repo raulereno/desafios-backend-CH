@@ -47,15 +47,17 @@ const purchaseProducts = async (req, res) => {
         purchaser: req.user.username,
         products: productsTicket,
       });
+      console.log("🚀 ~ file: ticket.controller.js:57 ~ purchaseProducts ~ req.user:", req.user)
+
       resultMailing = sendTicketMail(
         ticket,
         req.user,
         "http://localhost:3001/payment"
       );
     }
+    console.log("🚀 ~ file: ticket.controller.js:62 ~ purchaseProducts ~ ticket:", ticket)
 
     res.status(201).send({ status: "success", payload: ticket });
-    // const result = await purchaseProducts()
   } catch (error) {
     res.status(404).send({ status: "error", message: error.message });
   }

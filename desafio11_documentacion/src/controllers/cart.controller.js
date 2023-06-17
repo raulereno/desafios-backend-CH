@@ -36,6 +36,7 @@ const createCart = async (req, res) => {
 const addProductToCart = async (req, res) => {
   try {
     const result = await addProductToCartService(req.params, req.user.username);
+
     res.status(200).send({ status: "success", payload: result });
   } catch (error) {
     res.status(400).send({ status: "error", payload: error.message });

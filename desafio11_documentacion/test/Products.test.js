@@ -3,12 +3,12 @@ const { requester } = require("./testing.config");
 
 describe('testeo de productos', () => {
     before(async () => {
-        const adminUser = {
+        const user = {
             username: "ra",
             password: "villa"
         }
 
-        const { _body } = await requester.post('/login').send(adminUser);
+        const { _body } = await requester.post('/login').send(user);
 
         expect(_body.status).to.equal("success")
     });
