@@ -1,4 +1,4 @@
-# Tercera preentrega integradora
+# Desafio de testing
 
 
 
@@ -16,6 +16,14 @@ Una vez instaladas las dependencias ejecutar:
 
 ```bash
   npm start
+```    
+
+## Testing
+
+Una vez instaladas las dependencias ejecutar:
+
+```bash
+  npm run test
 ```    
 
 ## Variables de entorno
