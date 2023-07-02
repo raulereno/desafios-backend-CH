@@ -1,3 +1,6 @@
+const url = new URL(window.location.href);
+const params = new URLSearchParams(url.searchParams);
+
 document.addEventListener("DOMContentLoaded", () => {
   setSelectedQuantity();
 });
@@ -6,6 +9,7 @@ const selectQuantity = document.getElementById("quantity_select");
 
 if (selectQuantity) {
   selectQuantity.addEventListener("change", async (evt) => {
+    console.log("🚀 ~ file: filters.js:9 ~ selectQuantity.addEventListener ~ evt:", evt)
     const value = evt.target.value;
     const categoryQuery = params.get("query");
     const sort = params.get("sort");

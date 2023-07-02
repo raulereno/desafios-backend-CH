@@ -4,7 +4,7 @@ const getAllMessages = async (req, res) => {
   const user = await findUserService(req.user);
 
   res.render("chat", {
-    title: "Desafio - Chat",
+    title: "Chat",
     style: "index.css",
     user: user,
   });

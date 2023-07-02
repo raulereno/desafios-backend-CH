@@ -6,16 +6,24 @@ class ProductDAO {
     this.productsCollection = Product;
   }
 
-  async getAllProducts({ limit, page, query, sort }) {
+  async getAllProducts({ limit, page, query, sort }, user) {
+    let setQuery;
+    let products;
+
     if (sort !== "asc" && sort !== "desc") {
       sort = undefined;
     }
-    let products;
+
     const setLimit = limit ? limit : 10;
     const setPage = page ? Number(page) : 1;
     const setSort = sort ? { price: sort } : {};
 
-    const setQuery = query ? { category: query } : {};
+    if (query?.includes("@")) {
+      setQuery = query ? { owner: query } : {};
+    } else {
+      setQuery = query ? { category: query } : {};
+    }
+
     const setStringQuery = query ? "&query=" + query : "";
 
     const options = {

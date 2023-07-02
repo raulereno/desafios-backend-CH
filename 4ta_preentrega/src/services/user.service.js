@@ -3,6 +3,8 @@ const UserRepository = require("../dao/repositories/user.repository");
 const { createCartService } = require("./cart.service");
 const userRepository = new UserRepository();
 
+const documentsRequiredPremiumUser = ['identification', 'address', 'statusCount']
+
 const createUserService = async (user) => {
   try {
     const newCart = await createCartService();
@@ -41,6 +43,7 @@ const getUserByUsername = async (username) => {
 };
 
 const findUserService = async (user) => {
+  console.log("🚀 ~ file: user.service.js:44 ~ findUserService ~ user:", user)
   try {
     const userInDB = await userRepository.findUser(user);
     return userInDB;
@@ -63,13 +66,66 @@ const loginLogoutUserService = async (user) => {
   }
 };
 
+
 const changeRolService = async (uid) => {
   try {
-    const user = await userRepository.changeRol(uid);
-    return user
+    const user = await userRepository.findUserById(uid)
+    if (user.rol === "usuario") {
+
+      const missingDocs = []
+      documentsRequiredPremiumUser.forEach(documentName => {
+        let foundDoc = false
+        for (const i of user.documents) {
+          if (i.name === documentName) {
+            foundDoc = true
+          }
+        }
+        if (!foundDoc) missingDocs.push(documentName)
+      })
+      if (missingDocs.length) {
+        throw new Error(`Falta los siguientes documentos para ser premium: ${missingDocs.join(',')}`)
+      } else {
+        return await userRepository.changeRol(uid);
+      }
+    } else {
+      return await userRepository.changeRol(uid);
+    }
+
+
+  } catch (error) {
+    console.log("🚀 ~ file: user.service.js:96 ~ changeRolService ~ error:", error)
+    throw Error(error)
+  }
+}
+//TODO: Poner proteccion a los archivos
+const uploadDocsService = async (files, email) => {
+  try {
+    const user = await userRepository.findUserByEmail(email);
+    const file_keys = Object.keys(files);
+
+    file_keys.forEach(key => {
+      const find = user.documents?.find(document => document.name === key)
+      console.log("🚀 ~ file: user.service.js:84 ~ uploadDocsService ~ find:", find)
+      if (find) {
+        find.reference = `http://localhost:3001/documents/${files[key][0].filename}`
+      }
+      else {
+        user.documents.push({
+          name: files[key][0].fieldname,
+          reference: `http://localhost:3001/documents/${files[key][0].filename}`
+        })
+      }
+    })
+
+
+
+    const result = await userRepository.updateUser(user)
+
+    return true
   } catch (error) {
     throw Error(error)
   }
+
 }
 
 module.exports = {
@@ -79,5 +135,6 @@ module.exports = {
   getUserByEmailService,
   changeRolService,
   updateUserService,
-  loginLogoutUserService
+  loginLogoutUserService,
+  uploadDocsService
 };

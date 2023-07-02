@@ -1,7 +1,9 @@
 <aside id="filters">
     <h2>Categorias</h2>
     <ul class="categories">
-        {{!-- TODO: Agregar filtros 'Mis productos' --}}
+        <li><a
+                href="http://localhost:3001/products?query={{user.email}}&limit={{products.limit}}&sort={{products.sort}}">Mis productos</a>
+        </li>
         <li><a
                 href="http://localhost:3001/products?query=balanceado&limit={{products.limit}}&sort={{products.sort}}">Balanceado</a>
         </li>
@@ -14,6 +16,7 @@
         <li><a
                 href="http://localhost:3001/products?query=general&limit={{products.limit}}&sort={{products.sort}}">General</a>
         </li>
+        
     </ul>
 
     <h2>Filtros</h2>

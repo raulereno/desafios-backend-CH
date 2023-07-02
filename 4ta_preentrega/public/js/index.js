@@ -18,11 +18,10 @@ document.addEventListener("DOMContentLoaded", () => {
   openModalCreate();
   submitUpdateForm();
   showButtonsToAdmin();
-  showButtonsToOwner()
+  showButtonsToOwner();
 });
+//
 
-const url = new URL(window.location.href);
-const params = new URLSearchParams(url.searchParams);
 
 const submitCreateForm = () => {
   document.querySelector("#create_form")?.addEventListener("submit", (evt) => {
@@ -101,6 +100,7 @@ const send_update = async (evt) => {
   })
     .then((res) => res.json())
     .then((res) => {
+      console.log("🚀 ~ file: index.js:103 ~ .then ~ res:", res)
       if (res.code === 401 && res.status === "Unauthorized") {
         Swal.fire({
           position: "center",
@@ -110,7 +110,7 @@ const send_update = async (evt) => {
         });
       }
       //Los botones se muestran solo a los dueños pero por seguridad dejo alerta tambien
-      else if (res.payload?.includes("No tienes autorización para modificar este producto")) {
+      else if (res.status === "Unauthorized" && res.message?.includes("No tienes autorización para modificar este producto")) {
         Swal.fire({
           position: "center",
           icon: "error",
@@ -119,7 +119,7 @@ const send_update = async (evt) => {
         });
       }
       else {
-        // window.location.reload();
+        window.location.reload();
       }
     });
 };
@@ -241,4 +241,58 @@ const showButtonsToOwner = () => {
       button.style.display = "flex"
     }
   });
+}
+
+const changeRol = () => {
+  const link = document.getElementById("changeRolLink")
+  console.log("🚀 ~ file: index.js:249 ~ changeRol ~ link:", link.dataset.path)
+  fetch(`http://${window.location.host}/${link?.dataset.path}`).then(res => res.json()).then(res => {
+
+    console.log("🚀 ~ file: index.js:251 ~ fetch ~ res:", res)
+    if (res.code === 406 && res.message?.includes('Falta los siguientes documentos para ser premium')) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Te faltan documentos para convertirte en premium',
+        showCancelButton: true,
+        confirmButtonText: 'Ir a cargar documentos',
+        cancelButtonText: 'Más tarde',
+        reverseButtons: true,
+        html: `<ul>${res.missingDocs?.map(element => {
+          return `<li>${element}</li>`
+        })}</ul>`
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.replace("/profile");
+        }
+      })
+    }
+    else if (res.status === "success" && res.message?.includes('El usuario a cambiado de rol')) {
+      Swal.fire({
+        title: res.message,
+        timer: 2000,
+        icon: 'success',
+        timerProgressBar: true,
+        allowOutsideClick: false,
+        didOpen: () => {
+          Swal.showLoading()
+          const b = Swal.getHtmlContainer().querySelector('b')
+          timerInterval = setInterval(() => {
+            b.textContent = Swal.getTimerLeft()
+          }, 100)
+        },
+        willClose: () => {
+          clearInterval(timerInterval)
+        }
+      }).then((result) => {
+        /* Read more about handling dismissals below */
+        if (result.dismiss === Swal.DismissReason.timer) {
+          window.location.replace("/products");
+        }
+      })
+    }
+
+  }).catch(err => {
+    console.log("🚀 ~ file: index.js:255 ~ fetch ~ err:", err)
+
+  })
 }

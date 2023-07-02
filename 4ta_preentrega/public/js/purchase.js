@@ -6,6 +6,10 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 const purchaseProducts = () => {
+
+  const cartId = localStorage.getItem('cartId')
+
+
   Swal.fire({
     title:
       "Los productos que no tenemos en stock quedaran almacenados en tu carrito para más adelante, te gustaría continuar para finalizar el pago?",
@@ -15,9 +19,8 @@ const purchaseProducts = () => {
     confirmButtonText: "Continuar",
     reverseButtons: true,
   }).then(async (result) => {
-    /* Read more about isConfirmed, isDenied below */
     if (result.isConfirmed) {
-      fetch(`${window.location.protocol}//${window.location.host}/api/purchase`, { method: "GET" })
+      fetch(`${window.location.protocol}//${window.location.host}/api/cart/${cartId}/purchase`, { method: "GET" })
         .then((res) => res.json())
         .then((res) => {
           if (res.status === "success") {

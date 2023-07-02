@@ -3,9 +3,9 @@ const ProductRepository = require("../dao/repositories/product.repository");
 
 const productRepository = new ProductRepository();
 
-const getProductsService = async (filters) => {
+const getProductsService = async (filters, user) => {
   try {
-    const products = await productRepository.getAllProducts(filters);
+    const products = await productRepository.getAllProducts(filters, user);
     return products;
   } catch (error) {
     throw Error(error);

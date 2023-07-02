@@ -10,8 +10,8 @@ const { findUserService } = require("../services/user.service")
 
 const getAllProducts = async (req, res, next) => {
   try {
-    const products = await getProductsService(req.query);
     const user = await findUserService(req.user);
+    const products = await getProductsService(req.query, req.user);
 
     res.render("home", {
       title: "Desafio - Productos",
@@ -30,7 +30,7 @@ const getOneProduct = async (req, res, next) => {
     const result = await updateProductService(req.params, req.body);
     res.status(200).send({ status: "success", payload: result });
   } catch (error) {
-    res.status(400).send({ status: "error", payload: error.message });
+    next(error)
   }
 };
 
@@ -39,7 +39,7 @@ const updateProduct = async (req, res, next) => {
     const result = await updateProductService(req.params, req.body, req.user.email);
     res.status(200).send({ status: "success", payload: result });
   } catch (error) {
-    res.status(400).send({ status: "error", payload: error.message });
+    next(error)
   }
 };
 const createOneProduct = async (req, res, next) => {
@@ -56,7 +56,7 @@ const createManyProducts = async (req, res, next) => {
     const result = await createManyProductsService();
     res.status(200).send({ status: "success", payload: result });
   } catch (error) {
-    res.status(400).send({ status: "error", payload: error.message });
+    next(error)
   }
 };
 
@@ -66,7 +66,7 @@ const deleteProduct = async (req, res, next) => {
     await deleteProductService(req.params, req.user.email);
     res.status(200).json({ status: "success", payload: "Product deleted" });
   } catch (error) {
-    res.status(400).send({ status: "error", message: error.message });
+    next(error)
   }
 };
 

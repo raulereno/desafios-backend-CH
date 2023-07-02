@@ -39,6 +39,39 @@ const invalidCredentials = (err, req, res) => {
     code: 403,
   });
 };
+const unauthorizedUser = (err, req, res) => {
+
+  req.logger.warning("Usuario no autorizado a realizar esta acción")
+
+  res.status(401).send({
+    status: "Unauthorized",
+    message: err.message,
+    code: 401,
+  });
+};
+
+const incompleteDocsPremium = (err, req, res) => {
+  req.logger.warning(err.message)
+
+  const missingDocs = err.message?.split('premium: ')[1]?.split(",").map(element => {
+    if (element === "identification") {
+      return "Identificación"
+    }
+    if (element === "address") {
+      return "Comprobante de domicilio"
+    }
+    if (element === "statusCount") {
+      return "Comprobante de estado de cuenta"
+    }
+  })
+
+  res.status(406).send({
+    status: "Missing Documents",
+    message: err.message,
+    missingDocs: missingDocs,
+    code: 406,
+  });
+}
 
 const errorHandler = (err, req, res, next) => {
   try {
@@ -50,6 +83,12 @@ const errorHandler = (err, req, res, next) => {
     }
     if (err.message == "Constraseña incorrecta") {
       return (err = invalidCredentials(err, req, res));
+    }
+    if (err.message?.includes("No tienes autorización para modificar este producto")) {
+      return (err = unauthorizedUser(err, req, res));
+    }
+    if (err.message?.includes("Falta los siguientes documentos para ser premium")) {
+      return (err = incompleteDocsPremium(err, req, res));
     }
     return (err = handleValidationError(err, req, res));
   } catch (error) {

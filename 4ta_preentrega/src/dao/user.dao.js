@@ -5,6 +5,15 @@ class UserDAO {
     this.userCollection = User;
   }
 
+  async createUser(user, cid) {
+    try {
+      const newUser = await this.userCollection.create({ ...user, cartId: cid });
+      return newUser;
+    } catch (error) {
+      throw Error(error)
+    }
+  }
+
   async getUserByUsername(username) {
     try {
       const user = await this.userCollection
@@ -16,14 +25,7 @@ class UserDAO {
     }
   }
 
-  async createUser(user, cid) {
-    try {
-      const newUser = await this.userCollection.create({ ...user, cartId: cid });
-      return newUser;
-    } catch (error) {
-      throw Error(error)
-    }
-  }
+
 
   async findUser(user) {
     try {
@@ -62,6 +64,15 @@ class UserDAO {
     }
   }
 
+  async findUserById(uid) {
+    try {
+      const user = await this.userCollection.findOne({ _id: uid });
+      return user;
+    } catch (error) {
+      throw Error(error);
+    }
+  }
+
   async updateUser(user) {
     try {
       const result = await this.userCollection.findOneAndUpdate({ _id: user._id }, user);
@@ -81,12 +92,11 @@ class UserDAO {
       } else {
         user.rol = "usuario";
       }
-      const updatedUser = await this.userCollection.updateOne({ _id: uid }, user).lean();
+      const updatedUser = await this.userCollection.findOneAndUpdate({ _id: uid }, user).lean();
       return updatedUser;
     } catch (error) {
       throw Error(error);
     }
-
   }
 }
 

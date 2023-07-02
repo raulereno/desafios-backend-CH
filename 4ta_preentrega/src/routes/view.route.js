@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { formLoginUser, formRegisterUser, formRecoverPass, restorePassword } = require("../controllers/user.controller");
+const { formLoginUser, formRegisterUser, formRecoverPass, restorePassword, profileView } = require("../controllers/user.controller");
 const { getAllProducts } = require("../controllers/products.controller");
 const isLogged = require("../middlewares/isLogged");
 const { getCart } = require("../controllers/cart.controller");
@@ -13,6 +13,7 @@ viewsRoute.get("/login", formLoginUser);
 viewsRoute.get("/register", formRegisterUser);
 viewsRoute.get("/recover", formRecoverPass)
 viewsRoute.get("/restorepass/:token", restorePassword);
+viewsRoute.get("/profile", isLogged, profileView);
 //Renders relacionados con los productos
 viewsRoute.get("/products", isLogged, getAllProducts);
 //Renders relacionados con el carrito

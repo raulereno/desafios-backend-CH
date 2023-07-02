@@ -29,7 +29,7 @@ const sendMessages = async () => {
   let email = document.querySelector("#user_name");
   let message = document.querySelector("#user_message");
 
-  await fetch(`${window.location.href}`, {
+  await fetch(`${window.location.protocol}//${window.location.host}/api/chat`, {
     method: "POST",
     mode: "cors",
     headers: {

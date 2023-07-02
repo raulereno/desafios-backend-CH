@@ -4,7 +4,9 @@ const {
   changeRolService,
   getUserByEmailService,
   updateUserService,
-  loginLogoutUserService
+  loginLogoutUserService,
+  getUserByUsername,
+  uploadDocsService
 } = require("../services/user.service");
 const { generateAuthToken, decodeAuthToken } = require("../utils/jwt");
 const { sendResetPassEmail } = require("../utils/nodemailer");
@@ -139,12 +141,39 @@ const changeRol = async (req, res, next) => {
   const { uid } = req.params;
 
   try {
-    await changeRolService(uid)
-    res.redirect("/products");
+    const user = await changeRolService(uid)
+
+    return res.status(201).send({ status: "success", message: `El usuario a cambiado de rol a <strong>${user.rol}</strong>` })
   } catch (error) {
     next(error);
   }
 }
+
+const profileView = async (req, res, next) => {
+
+  try {
+    const user = await getUserByEmailService(req.user.username);
+
+    res.render("userProfile", { title: "Profile", style: "index.css", user });
+
+  } catch (error) {
+    next(error);
+  }
+};
+
+const uploadDocs = async (req, res, next) => {
+  try {
+    const result = await uploadDocsService(req.files, req.user.username)
+
+    if (result) {
+      return res.status(201).send({ status: "success", code: 201, message: "Archivo/s agregado con exito" })
+    }
+    throw Error(result?.message)
+  } catch (error) {
+    next(error);
+  }
+}
+
 
 module.exports = {
   formRegisterUser,
@@ -156,5 +185,7 @@ module.exports = {
   logoutUser,
   changeRol,
   restorePassword,
-  sendNewPassword
+  sendNewPassword,
+  profileView,
+  uploadDocs
 };

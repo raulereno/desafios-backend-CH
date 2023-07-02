@@ -33,14 +33,16 @@ const userSchema = mongoose.Schema({
   last_connection: {
     type: String
   },
-  documents: {
-    name: {
-      type: String
-    },
-    reference: {
-      type: String
+  documents: [
+    {
+      name: {
+        type: String
+      },
+      reference: {
+        type: String
+      }
     }
-  }
+  ]
 });
 
 userSchema.pre("save", function (next) {

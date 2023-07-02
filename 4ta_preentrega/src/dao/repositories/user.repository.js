@@ -4,6 +4,14 @@ const userSchema = require("../../models/user.model");
 const userDao = new UserDAO();
 
 class UserRepository {
+  async createUser(user, cid) {
+    try {
+      const result = await userDao.createUser(user, cid);
+      return result;
+    } catch (error) {
+      throw Error(error)
+    }
+  }
   async getUserByUsername(username) {
     try {
       const result = await userDao.getUserByUsername(username);
@@ -14,14 +22,6 @@ class UserRepository {
 
   }
 
-  async createUser(user, cid) {
-    try {
-      const result = await userDao.createUser(user, cid);
-      return result;
-    } catch (error) {
-      throw Error(error)
-    }
-  }
 
   async findUser(user) {
     try {
@@ -37,6 +37,15 @@ class UserRepository {
   async findUserByEmail(email) {
     try {
       const result = await userDao.findUserByEmail(email);
+      return result;
+    } catch (error) {
+      throw Error(error)
+    }
+  }
+
+  async findUserById(uid) {
+    try {
+      const result = await userDao.findUserById(uid);
       return result;
     } catch (error) {
       throw Error(error)

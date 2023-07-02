@@ -4,8 +4,8 @@ const ProductDAO = require("../products.dao");
 const productDao = new ProductDAO();
 
 class ProductRepository {
-  async getAllProducts(filter) {
-    const result = await productDao.getAllProducts(filter);
+  async getAllProducts(filter, user) {
+    const result = await productDao.getAllProducts(filter, user);
     return result;
   }
 
